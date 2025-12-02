@@ -1,0 +1,121 @@
+{
+  "title": "presentation",
+  "pageCount": 23,
+  "pages": [
+    {
+      "index": 1,
+      "image": "pages/page-01.jpg",
+      "text": ""
+    },
+    {
+      "index": 2,
+      "image": "pages/page-02.jpg",
+      "text": ""
+    },
+    {
+      "index": 3,
+      "image": "pages/page-03.jpg",
+      "text": ""
+    },
+    {
+      "index": 4,
+      "image": "pages/page-04.jpg",
+      "text": ""
+    },
+    {
+      "index": 5,
+      "image": "pages/page-05.jpg",
+      "text": ""
+    },
+    {
+      "index": 6,
+      "image": "pages/page-06.jpg",
+      "text": ""
+    },
+    {
+      "index": 7,
+      "image": "pages/page-07.jpg",
+      "text": ""
+    },
+    {
+      "index": 8,
+      "image": "pages/page-08.jpg",
+      "text": ""
+    },
+    {
+      "index": 9,
+      "image": "pages/page-09.jpg",
+      "text": ""
+    },
+    {
+      "index": 10,
+      "image": "pages/page-10.jpg",
+      "text": ""
+    },
+    {
+      "index": 11,
+      "image": "pages/page-11.jpg",
+      "text": ""
+    },
+    {
+      "index": 12,
+      "image": "pages/page-12.jpg",
+      "text": ""
+    },
+    {
+      "index": 13,
+      "image": "pages/page-13.jpg",
+      "text": ""
+    },
+    {
+      "index": 14,
+      "image": "pages/page-14.jpg",
+      "text": ""
+    },
+    {
+      "index": 15,
+      "image": "pages/page-15.jpg",
+      "text": ""
+    },
+    {
+      "index": 16,
+      "image": "pages/page-16.jpg",
+      "text": ""
+    },
+    {
+      "index": 17,
+      "image": "pages/page-17.jpg",
+      "text": ""
+    },
+    {
+      "index": 18,
+      "image": "pages/page-18.jpg",
+      "text": ""
+    },
+    {
+      "index": 19,
+      "image": "pages/page-19.jpg",
+      "text": ""
+    },
+    {
+      "index": 20,
+      "image": "pages/page-20.jpg",
+      "text": ""
+    },
+    {
+      "index": 21,
+      "image": "pages/page-21.jpg",
+      "text": ""
+    },
+    {
+      "index": 22,
+      "image": "pages/page-22.jpg",
+      "text": ""
+    },
+    {
+      "index": 23,
+      "image": "pages/page-23.jpg",
+      "text": ""
+    }
+  ]
+}
