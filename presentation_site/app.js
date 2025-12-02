@@ -23,7 +23,7 @@ function renderGrid() {
     const card = document.createElement("article");
     card.className = "card";
     card.innerHTML = `
-      <img src="${page.image}" alt="Plate ${page.index}" loading="lazy" />
+      <img src="${page.image}" alt="Plate ${page.index}" loading="lazy" draggable="false" />
       <div class="card__body">
         <span>Plate ${page.index.toString().padStart(2, "0")}</span>
         <span>↗</span>
@@ -109,6 +109,10 @@ function wireEvents() {
     if (e.key === "ArrowLeft") next(-1);
   });
 }
+
+// Basic deterrents against casual saving via right-click/drag
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("dragstart", (e) => e.preventDefault());
 
 wireEvents();
 loadData();
