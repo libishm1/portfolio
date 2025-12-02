@@ -214,6 +214,29 @@ body {
   color: var(--muted);
   text-align: center;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f6f6fb;
+  border: 1px solid var(--border);
+  color: #1f1f2c;
+  font-size: 17px;
+  text-decoration: none;
 }
 
 .overlay {
