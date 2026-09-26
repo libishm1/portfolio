@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Libish Murugesan · Computational Design Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  html,body{margin:0;padding:0;}
+  body{background:#33333a;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  img{display:block;}
+  @page{ size:1320px 880px; margin:0; }
+  @media print{
+    body{background:#fff;}
+    .deck{background:#fff!important;padding:0!important;gap:0!important;}
+    .plate{box-shadow:none!important;margin:0!important;}
+  }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+<div class="deck" style="background:#33333a;min-height:100vh;padding:44px 48px;display:flex;flex-direction:column;align-items:flex-start;gap:34px;font-family:'Archivo',sans-serif;">
+  <sc-for list="{{ plates }}" as="p" hint-placeholder-count="0">
+    <div class="plate" style="break-after:page;position:relative;width:1320px;height:880px;flex:none;overflow:hidden;background:#F6F4EF;box-shadow:0 10px 50px rgba(0,0,0,.4);">
+
+      <!-- ============ COVER ============ -->
+      <sc-if value="{{ p.isCover }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;display:flex;">
+          <div style="width:53%;flex:none;background:#F2EFE6;padding:76px 56px 64px 92px;display:flex;flex-direction:column;justify-content:space-between;position:relative;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#34327A;">Libish Murugesan</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.2em;color:#918D98;">2015 - 2026</div>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#A8553B;margin-bottom:24px;">Portfolio · Selected Works</div>
+              <h1 style="margin:0;width:auto;height:auto;font-family:'Spectral',serif;font-weight:300;font-size:74px;line-height:1.08;letter-spacing:-.02em;color:#16142E;">Computational<br/>Design<br/><span style="font-style:italic;font-weight:400;">Portfolio</span></h1>
+            </div>
+            <div>
+              <div style="width:54px;height:2px;background:#34327A;margin-bottom:20px;"></div>
+              <div style="font-family:'Archivo',sans-serif;font-size:16.5px;line-height:1.5;color:#3A3850;max-width:430px;">Robotic fabrication · geometry processing · architecture.</div>
+              <div style="margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#56535E;line-height:1.9;">github.com/libishm1<br/>Riyadh · Barcelona · Tamil Nadu</div>
+            </div>
+          </div>
+          <div style="flex:1;background:#BDB8E0;position:relative;overflow:hidden;">
+            <img src="_assets/img/cover-min.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;"/>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ CONTENTS / PROFILE ============ -->
+      <sc-if value="{{ p.isContents }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;padding:76px 88px;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#918D98;border-bottom:1px solid #DEDAD0;padding-bottom:16px;">
+            <span>Profile &amp; Contents</span><span>01</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:64px;margin-top:46px;flex:1;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#34327A;margin-bottom:20px;">Profile</div>
+              <h2 style="margin:0 0 22px;font-family:'Spectral',serif;font-weight:400;font-size:34px;line-height:1.18;letter-spacing:-.01em;color:#16151C;">Computational designer &amp; researcher in robotic fabrication and geometry.</h2>
+              <p style="margin:0 0 16px;font-size:15.5px;line-height:1.62;color:#56535E;">I build the geometry, perception and motion systems that let machines fabricate with non-standard materials - irregular timber, salvaged stone, sheet metal, clay and concrete. The work spans graduate research, built pavilions, and an ecosystem of open-source tools for AEC.</p>
+              <p style="margin:0;font-size:15.5px;line-height:1.62;color:#56535E;">Trained in architecture (B.Arch) and robotics &amp; advanced construction (MRAC, IAAC Barcelona); currently researching computational architecture and robotics at Alfaisal University, Riyadh.</p>
+              <div style="margin-top:30px;border-top:1px solid #DEDAD0;padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;">
+                <div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#918D98;margin-bottom:6px;">Focus</div><div style="font-size:14px;color:#16151C;line-height:1.4;">Robotic fabrication · scan-to-fabricate · geometry &amp; packing · BIM software</div></div>
+                <div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#918D98;margin-bottom:6px;">Stack</div><div style="font-size:14px;color:#16151C;line-height:1.4;">Rhino · Grasshopper · ROS 2 · Python · Three.js · PyTorch</div></div>
+                <div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#918D98;margin-bottom:6px;">Published</div><div style="font-size:14px;color:#16151C;line-height:1.4;">eCAADe 2022 · Caerdroia 54 (2025) · Zenodo datasets</div></div>
+                <div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#918D98;margin-bottom:6px;">Contact</div><div style="font-size:14px;color:#16151C;line-height:1.4;">github.com/libishm1</div></div>
+              </div>
+            </div>
+            <div style="border-left:1px solid #DEDAD0;padding-left:46px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#34327A;margin-bottom:24px;">Contents</div>
+              <sc-for list="{{ contents }}" as="c" hint-placeholder-count="4">
+                <div style="display:flex;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid #E8E4DB;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#34327A;width:22px;flex:none;">{{ c.tag }}</span>
+                  <span style="font-family:'Spectral',serif;font-size:21px;color:#16151C;flex:1;">{{ c.title }}</span>
+                  <span style="font-family:'Archivo',sans-serif;font-size:13px;color:#918D98;flex:none;">{{ c.sub }}</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#56535E;width:54px;text-align:right;flex:none;">{{ c.pages }}</span>
+                </div>
+              </sc-for>
+
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ SECTION DIVIDER ============ -->
+      <sc-if value="{{ p.isDivider }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:{{ p.bg }};color:#F2EFE6;padding:80px 88px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,239,230,.6);">
+            <span>Section {{ p.letter }}</span><span>{{ p.range }}</span>
+          </div>
+          <div>
+            <div style="font-family:'Spectral',serif;font-weight:300;font-size:150px;line-height:1;color:rgba(242,239,230,.16);margin-bottom:6px;">{{ p.letter }}</div>
+            <h2 style="margin:0 0 26px;font-family:'Spectral',serif;font-weight:400;font-size:60px;line-height:1.04;letter-spacing:-.015em;max-width:900px;">{{ p.title }}</h2>
+            <p style="margin:0;max-width:680px;font-size:18px;line-height:1.6;color:rgba(242,239,230,.82);">{{ p.blurb }}</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="4">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(242,239,230,.85);border:1px solid rgba(242,239,230,.28);border-radius:999px;padding:7px 15px;">{{ it }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ PROJECT ============ -->
+      <sc-if value="{{ p.isProject }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:{{ p.plateBg }};padding:62px 88px 56px;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:{{ p.metaColor }};border-bottom:1px solid {{ p.ruleColor }};padding-bottom:15px;">
+            <span>{{ p.section }}</span><span>{{ p.page }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:54px;flex:1;min-height:0;margin-top:34px;">
+            <!-- text -->
+            <div style="display:flex;flex-direction:column;min-height:0;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:{{ p.accent }};margin-bottom:14px;">{{ p.kicker }}</div>
+              <h2 style="margin:0 0 8px;font-family:'Spectral',serif;font-weight:400;font-size:46px;line-height:1.0;letter-spacing:-.015em;color:{{ p.titleColor }};">{{ p.title }}</h2>
+              <div style="font-family:'Archivo',sans-serif;font-size:17px;color:{{ p.subColor }};line-height:1.35;margin-bottom:18px;">{{ p.sub }}</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+                <sc-for list="{{ p.meta }}" as="m" hint-placeholder-count="3">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:{{ p.metaColor }};border:1px solid {{ p.ruleColor }};padding:5px 11px;border-radius:3px;">{{ m }}</span>
+                </sc-for>
+              </div>
+              <p style="margin:0 0 14px;flex:none;font-family:'Spectral',serif;font-style:italic;font-size:18.5px;line-height:1.45;color:{{ p.leadColor }};">{{ p.lead }}</p>
+              <p style="margin:0 0 22px;flex:none;font-size:14.5px;line-height:1.6;color:{{ p.bodyColor }};white-space:pre-line;">{{ p.body }}</p>
+              <div style="margin-top:auto;">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:{{ p.metaColor }};margin-bottom:11px;">Selected contributions</div>
+                <sc-for list="{{ p.contrib }}" as="ct" hint-placeholder-count="3">
+                  <div style="display:flex;gap:11px;margin-bottom:7px;align-items:baseline;">
+                    <span style="width:5px;height:5px;border-radius:1px;background:{{ p.accent }};flex:none;transform:translateY(-2px);"></span>
+                    <span style="font-size:13.5px;line-height:1.45;color:{{ p.bodyColor }};">{{ ct }}</span>
+                  </div>
+                </sc-for>
+                <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:20px;gap:16px;">
+                  <div style="display:flex;gap:7px;flex-wrap:wrap;">
+                    <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="4">
+                      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:{{ p.tagColor }};">{{ t }}</span>
+                    </sc-for>
+                  </div>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:{{ p.accent }};white-space:nowrap;">{{ p.link }}</span>
+                </div>
+              </div>
+            </div>
+            <!-- visual -->
+            <div style="display:flex;flex-direction:column;min-height:0;gap:12px;">
+              <sc-for list="{{ p.heroList }}" as="hsrc" hint-placeholder-count="0">
+                <div style="flex:1;min-height:0;border:1px solid {{ p.ruleColor }};overflow:hidden;background:{{ p.frameBg }};display:flex;align-items:center;justify-content:center;padding:4px;">
+                  <img src="{{ hsrc }}" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;"/>
+                </div>
+              </sc-for>
+              <sc-if value="{{ p.hasQuad }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:1;min-height:0;position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:#F1EFE9;">
+                  <img src="{{ p.quadHero }}" style="width:100%;height:100%;object-fit:contain;"/>
+                  <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#fff;background:rgba(10,9,24,.6);padding:3px 7px;">{{ p.quadHeroLabel }}</span>
+                </div>
+                <div style="flex:none;height:178px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+                  <sc-for list="{{ p.quadRow }}" as="q" hint-placeholder-count="3">
+                    <div style="position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:#F1EFE9;">
+                      <img src="{{ q.img }}" style="width:100%;height:100%;object-fit:contain;"/>
+                      <span style="position:absolute;left:7px;top:7px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.08em;color:#16151C;background:rgba(255,255,255,.8);padding:2px 6px;">{{ q.label }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p.hasSpec }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;">
+                  <sc-if value="{{ p.hasPair }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                      <div style="position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:{{ p.specBg }};">
+                        <img src="{{ p.pairA }}" style="width:100%;height:100%;object-fit:cover;"/>
+                        <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#fff;background:rgba(10,9,24,.6);padding:3px 7px;">{{ p.pairAlabel }}</span>
+                      </div>
+                      <div style="position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:{{ p.specBg }};">
+                        <img src="{{ p.pairB }}" style="width:100%;height:100%;object-fit:cover;"/>
+                        <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#fff;background:rgba(10,9,24,.6);padding:3px 7px;">{{ p.pairBlabel }}</span>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ p.hasTrio }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;">
+                      <div style="flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                        <div style="position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:#EFECE4;">
+                          <img src="{{ p.trioA }}" style="width:100%;height:100%;object-fit:contain;"/>
+                          <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#fff;background:rgba(10,9,24,.6);padding:3px 7px;">{{ p.trioAlabel }}</span>
+                        </div>
+                        <div style="position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:#DFE3E6;">
+                          <img src="{{ p.trioB }}" style="width:100%;height:100%;object-fit:contain;"/>
+                          <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#fff;background:rgba(10,9,24,.6);padding:3px 7px;">{{ p.trioBlabel }}</span>
+                        </div>
+                      </div>
+                      <div style="flex:none;height:158px;position:relative;border:1px solid {{ p.ruleColor }};overflow:hidden;background:#fff;">
+                        <img src="{{ p.trioC }}" style="width:100%;height:100%;object-fit:contain;"/>
+                        <span style="position:absolute;left:9px;top:9px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:#16151C;background:rgba(255,255,255,.72);padding:3px 7px;">{{ p.trioClabel }}</span>
+                      </div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ p.singleSlot }}" hint-placeholder-val="{{ true }}">
+                    <image-slot id="cap-{{ p.page }}" fit="{{ p.slotFit }}" shape="rect" src="{{ p.slotSrc }}" placeholder="{{ p.capHint }}" style="flex:1;min-height:0;display:block;width:100%;border:1px solid {{ p.ruleColor }};background:{{ p.specBg }};"></image-slot>
+                  </sc-if>
+                  <div style="flex:none;background:{{ p.specBg }};color:#EEEBF6;padding:17px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px;">
+                    <sc-for list="{{ p.metrics }}" as="mt" hint-placeholder-count="4">
+                      <div>
+                        <div style="font-family:'Spectral',serif;font-weight:300;font-size:27px;line-height:1;color:#fff;letter-spacing:-.01em;">{{ mt.v }}</div>
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.03em;color:rgba(238,235,246,.6);margin-top:6px;">{{ mt.k }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p.hasThumbs }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;height:184px;flex:none;">
+                  <sc-for list="{{ p.thumbs }}" as="th" hint-placeholder-count="0">
+                    <div style="border:1px solid {{ p.ruleColor }};overflow:hidden;background:{{ p.frameBg }};display:flex;align-items:center;justify-content:center;">
+                      <img src="{{ th }}" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;"/>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:{{ p.metaColor }};">{{ p.heroCap }}</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ GRID ============ -->
+      <sc-if value="{{ p.isGrid }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;padding:62px 88px 56px;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#918D98;border-bottom:1px solid #DEDAD0;padding-bottom:15px;">
+            <span>{{ p.section }}</span><span>{{ p.page }}</span>
+          </div>
+          <div style="margin-top:30px;margin-bottom:24px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A8553B;margin-bottom:10px;">{{ p.kicker }}</div>
+            <h2 style="margin:0;font-family:'Spectral',serif;font-weight:400;font-size:40px;letter-spacing:-.015em;color:#16151C;">{{ p.title }}</h2>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:20px;min-height:0;">
+            <sc-for list="{{ p.cards }}" as="cd" hint-placeholder-count="0">
+              <div style="display:flex;flex-direction:column;min-height:0;">
+                <div style="flex:1;min-height:0;border:1px solid #DEDAD0;overflow:hidden;background:#ECE9E1;">
+                  <img src="{{ cd.img }}" style="width:100%;height:100%;object-fit:cover;"/>
+                </div>
+                <div style="font-family:'Spectral',serif;font-size:17px;color:#16151C;margin-top:9px;line-height:1.1;">{{ cd.title }}</div>
+                <div style="font-family:'Archivo',sans-serif;font-size:12px;color:#7C7886;margin-top:3px;line-height:1.3;">{{ cd.sub }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ COLOPHON ============ -->
+      <sc-if value="{{ p.isColophon }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:#16142E;color:#E9E6F2;padding:76px 88px;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,230,242,.5);border-bottom:1px solid rgba(233,230,242,.18);padding-bottom:16px;">
+            <span>Index &amp; Colophon</span><span>{{ p.page }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:60px;margin-top:48px;flex:1;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#B8B2E0;margin-bottom:22px;">Repositories</div>
+              <sc-for list="{{ p.repos }}" as="r" hint-placeholder-count="6">
+                <div style="display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid rgba(233,230,242,.12);">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#fff;flex:none;width:230px;overflow-wrap:anywhere;">{{ r.name }}</span>
+                  <span style="font-family:'Archivo',sans-serif;font-size:13px;color:rgba(233,230,242,.72);flex:1;line-height:1.35;">{{ r.desc }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid rgba(233,230,242,.18);padding-left:54px;">
+              <div>
+                <h2 style="margin:0 0 20px;font-family:'Spectral',serif;font-weight:300;font-size:52px;line-height:1.02;letter-spacing:-.02em;">Thank you<span style="font-style:italic;">.</span></h2>
+                <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(233,230,242,.78);">This portfolio reconstructs a decade of computational design work - from the 2015–2022 academic and robotic-fabrication projects to the 2023–2026 software, sensing and heritage repositories.</p>
+              </div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:rgba(233,230,242,.7);line-height:2;">
+                Libish Murugesan<br/>
+                <span style="color:#B8B2E0;">github.com/libishm1</span><br/>
+                Computational Architecture &amp; Robotics<br/>
+                Riyadh · 2026
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // ---- shared style tokens for light project plates ----
+    const light = {
+      plateBg:'#F6F4EF', frameBg:'#ECE9E1', ruleColor:'#DEDAD0',
+      titleColor:'#16151C', subColor:'#56535E', leadColor:'#2A2840',
+      bodyColor:'#56535E', metaColor:'#918D98', tagColor:'#A9A4AE', accent:'#34327A'
+    };
+    const dark = {
+      plateBg:'#15142C', frameBg:'#23223F', ruleColor:'rgba(233,230,242,.2)',
+      titleColor:'#FFFFFF', subColor:'#B7B2D6', leadColor:'#D8D4EE',
+      bodyColor:'#AFAAC8', metaColor:'#8682A6', tagColor:'#8682A6', accent:'#B8B2E0'
+    };
+    const mk = (o) => Object.assign({ isProject:true, hasHero:!!o.hero, heroList:(o.hero?[o.hero]:[]), hasSpec:!!o.metrics,
+      hasThumbs:!!(o.thumbs&&o.thumbs.length), specBg:'#15142C', specFoot:'#B8B2E0', capHint:'Drop an image / screenshot', slotFit:'cover', slotSrc:'', hasPair:false, hasTrio:false, hasQuad:false, singleSlot:true },
+      (o.feature?dark:light), o);
+
+    const P = '_assets/extracted/';
+
+    const projects = [
+      // -------- SECTION A --------
+      mk({ feature:true, page:'02', section:'A · Robotic Fabrication', kicker:'Graduate Thesis · MRAC, IAAC Barcelona',
+        title:'Automated Spolia', sub:'Perception-assisted robotic placement of salvaged demolition stone',
+        meta:['2021','Robotic perception','Thesis'],
+        lead:'Reusing irregular stone shards from demolition waste by letting a robot see, plan and place them.',
+        body:'The system pairs robotic perception with a digital twin to tile an irregular substrate with non-standard stone fragments. Noisy depth scans are cleaned through Taubin smoothing, downsampling and Poisson sampling; a packing engine then selects and orients each shard by shape, size and surface curvature.\nRather than authoring explicit machine intelligence, the project frames fabrication as a collaborative loop - empowering digital artists with offline and semi-real-time robotic workflows that solve placement through visual perception and force-torque feedback.',
+        contrib:['Mesh processing + digital-twin pipeline for robotic motion planning','Curvature-aware packing of irregular stone fragments in 2D and 3D','Collision-checked motion planning with servo force-torque feedback'],
+        tags:['Open3D','UR10e','ROS','Grasshopper','Packing'], link:'github.com/libishm1',
+        hero:P+'page-08-3.jpg', thumbs:[P+'page-08-4.jpg',P+'page-08-6.jpg'],
+        heroCap:'UR10e placing salvaged shards · digital-twin packing · resolved surface' }),
+
+      mk({ page:'03', section:'A · Robotic Fabrication', kicker:'Studio 3 · MRAC',
+        title:'CCLT - Curved Cross-Laminated Timber', sub:'Recycling wood offcuts into bespoke double-curved panels',
+        meta:['2021','Material computation','Robotic CNC'],
+        lead:'Turning rough pine offcuts from wood manufacturing into self-shaping, double-curved laminated products.',
+        body:'A bottom-up approach to mitigate and understand material manufacturing affordances. The project studies how moisture-driven self-shaping and curve-creasing patterns can be steered toward explicit target geometry.\nMachine-learning pipelines augment the selection of curvatures across segmented panels, narrowing a wide material design space down to a usable design algorithm - with robot calibration closing the loop to fabrication.',
+        contrib:['Self-shaping wood characterisation (moisture, thickness, deflection)','ML-assisted curvature selection across segmented panels','Robot-calibrated lamination + creasing workflow'],
+        tags:['Self-shaping wood','ML','Robot calibration','Grasshopper'], link:'github.com/libishm1',
+        hero:'_assets/img/cclt_arch_v2.jpg', thumbs:[P+'page-03-3.jpg',P+'page-03-2.jpg'],
+        heroCap:'Robotic CNC on laminated timber · creased double-curvature demonstrators' }),
+
+      mk({ page:'04', section:'A · Robotic Fabrication', kicker:'Robotic Workshop · on-site',
+        title:'Log Pavilion', sub:'Scan-to-fabricate pavilion from irregular wooden logs',
+        meta:['2021','Scan-to-fabricate','Pavilion'],
+        lead:'Each irregular log is scanned, then a geometry-processing pipeline automates design and planning.',
+        body:'The pavilion is built entirely from irregular found logs. A scan-to-design database coordinates member geometry - end diameters, planes, overall length - while a design-to-fabrication algorithm resolves joinery, orientation and joint generation.\nThe scan-to-build workflow forms a complete solution from raw material to processing and assembly, with the computational arrangement of scans driving detail matching at every joint.',
+        contrib:['Scan-to-design database + geometry-processing pipeline','Automated joinery, orientation and joint generation','Raw-material-to-assembly fabrication planning'],
+        tags:['3D scanning','Point cloud','Grasshopper','Joinery'], link:'github.com/libishm1',
+        hero:P+'page-04-1.jpg', thumbs:[P+'page-04-3.jpg',P+'page-04-2.jpg'],
+        heroCap:'Robotic processing of scanned logs · resolved joinery geometry' }),
+
+      mk({ page:'05', section:'A · Robotic Fabrication', kicker:'Studio 1 · MRAC · eCAADe 2022',
+        title:'Crease Forming', sub:'“Programming Twist” - origami-inspired robotic metal forming',
+        meta:['2022','Published · eCAADe','Sheet metal'],
+        lead:'Exploring the geometric affordances of aluminium through flexible, robotic forming workflows.',
+        body:'Forming workflows on a robotic arm, inspired by traditional metal-forming and approximated by origami folding and rapid physics simulation to iterate ideas. A wheel cutter on a small workshop hydraulic press, fed by a robot, realises the design-to-production pipeline.\nThe automated, small-payload setup tolerates a wide variety of geometric possibilities; spring-back and elastic/plastic deformation are documented as first-class fabrication parameters.',
+        contrib:['Origami + physics-approximated forming design space','Automated design-to-production robotic pipeline','Documented spring-back / plastic-deformation tolerances'],
+        tags:['Aluminium','Origami','Physics sim','Robotic forming'], link:'eCAADe 2022 · github.com/libishm1',
+        hero:P+'page-05-1.jpg', thumbs:[P+'page-05-5.jpg',P+'page-05-3.jpg'],
+        heroCap:'Crease-formed twist demonstrators · double-curvature extrapolations' }),
+
+      mk({ page:'06', section:'A · Robotic Fabrication', kicker:'Workshop · MRAC',
+        title:'Non-planar Lattice 3D Printing', sub:'Space-frame lattices printed on a robotic arm',
+        meta:['2021','Non-planar AM','Robotic arm'],
+        lead:'Pushing non-planar 3D-printing toward self-supporting space-frame lattice structures.',
+        body:'The project prints non-planar space-frame lattices with PLA on a robotic arm. The hardest problem is the apex of the pyramidal module: extruder stop / wait / cool timing decides whether material sticks to the tip and drags, or stays too soft to support itself.\nDeviations across the 0.5 m span are characterised and corrected layer by layer, yielding a repeatable, fabricable lattice module.',
+        contrib:['Non-planar toolpathing for space-frame lattices','Apex stop/cool timing strategy for clean nodes','Span-deviation correction for a repeatable module'],
+        tags:['Non-planar AM','PLA','Robotic arm','Toolpathing'], link:'github.com/libishm1',
+        hero:'_assets/img/lattice_module.jpg', thumbs:[P+'page-11-1.jpg',P+'page-11-3.jpg'],
+        heroCap:'Repeatable lattice module · non-planar deposition' }),
+
+      mk({ page:'07', section:'A · Robotic Fabrication', kicker:'Project Associate · IISc Bangalore',
+        title:'Robotic Views of a Möbius Strip', sub:'Stereo reconstruction with a robot-mounted camera',
+        meta:['2020','Computer vision','IISc'],
+        lead:'Experimental robotic workflows in computer vision, reconstructing surfaces from many views.',
+        body:'A stereo camera system mounted on a robotic arm triangulates markers across a Möbius strip using multiple-view geometry. The robot provides controlled, repeatable camera poses for reconstruction.\nThe work tests and benchmarks novel computer-vision algorithms to recover surfaces, alongside a software pipeline that extracts robot poses and camera position for reconstruction.',
+        contrib:['Robot-driven multi-view stereo capture','Marker triangulation across a non-orientable surface','Pose-extraction pipeline for reconstruction'],
+        tags:['Stereo','Multi-view geometry','OpenCV','Robotics'], link:'github.com/libishm1',
+        hero:P+'page-06-1.jpg', thumbs:[P+'page-06-2.jpg',P+'page-06-3.jpg'],
+        heroCap:'Marker-patterned Möbius strip + robot-mounted stereo capture rig' }),
+
+      // -------- SECTION B --------
+      mk({ feature:true, page:'08', section:'B · Sensing & Heritage', kicker:'Independent pilot · open research · 2026',
+        title:'Kuppam GPR Fracture Study', sub:'From ground-penetrating radar to a straight-cut block plan in a black granite quarry',
+        meta:['2026','GPR · photogrammetry','GPL-3.0 · DOI'],
+        lead:'One crack in the wrong place turns a twenty-tonne block into road metal, so look under the floor before the first cut.',
+        body:'In August 2026 I commissioned an independent pilot: ground-penetrating radar over three benches of a black granite (dolerite) quarry near Kuppam, 89 lines walked by PARSAN Overseas on a painted 0.5 m grid.\nI re-tracked six fracture surfaces from the raw records, registered them onto photogrammetry of the same benches, and planned straight wire cuts that keep 15 cm clear of every surface: 42 blocks, 177 m³, 524 t, known before the first cut.',
+        contrib:['Six fracture surfaces re-picked from the raw radar records (14,315 picks)','Survey grids registered onto bench photogrammetry, checked against site photos','Straight-cut block planner: 15 cm clearance, cutting order, per-block risk'],
+        tags:['GPR','Photogrammetry','Python','Three.js'], link:'doi.org/10.6084/m9.figshare.33690616',
+        metrics:[{v:'89',k:'GPR lines'},{v:'14,315',k:'radar picks'},{v:'6',k:'fracture surfaces'},{v:'42',k:'blocks · 177 m³'}],
+        specLabel:'Survey · GPR fracture model', specNote:'Live model · figshare dataset DOI', specFoot:'#B8B2E0', capHint:'Drop a Kuppam capture', hasPair:true, singleSlot:false, pairA:'_assets/img/kuppam_registration.jpg', pairAlabel:'REGISTERED ON PHOTOGRAMMETRY', pairB:'_assets/img/kuppam_reprojection.jpg', pairBlabel:'CHECKED IN THE SITE PHOTO',
+        heroCap:'Radar picks re-tracked into six surfaces · straight-cut block plan with 15 cm clearance' }),
+
+      mk({ page:'09', section:'B · Sensing & Heritage', kicker:'Independent Research · Caerdroia 54 (2025)',
+        title:'Drone Photogrammetry of Stone Labyrinths', sub:'Full-arc drone video to textured mesh - Salem, Tamil Nadu',
+        meta:['2025','Photogrammetry','Heritage'],
+        lead:'An open-source pipeline turning a single arc of drone video into a fabricable textured mesh.',
+        body:'Documenting twin large-scale stone labyrinths in Salem - estimated at over 1,200 years old. The fully open-source workflow runs end-to-end in Google Colab: FFmpeg frame extraction, COLMAP structure-from-motion and dense stereo, then Open3D Poisson meshing with nearest-neighbour colour transfer.\nOutputs are vertex-coloured PLY meshes and 3D-printable STL derivatives, cleaned in Rhino 8 - prioritising transparency and reproducibility over speed.',
+        contrib:['Reproducible Colab pipeline: FFmpeg → COLMAP → Open3D','Textured PLY + print-ready STL for heritage documentation','Published archaeological documentation, Caerdroia 54'],
+        tags:['COLMAP','Open3D','FFmpeg','Rhino 8'], link:'github.com/libishm1/Colmap_Photogrammetry_Drone_video',
+        metrics:[{v:'1200+',k:'years old'},{v:'2 FPS',k:'frame extraction'},{v:'Poisson',k:'surface meshing'},{v:'PLY · STL',k:'outputs'}],
+        specLabel:'Pipeline · Salem labyrinths', specNote:'Live: sketchfab · doi.org datasets', specFoot:'#B8B2E0', capHint:'Drop a labyrinth mesh / Sketchfab capture', hasPair:true, singleSlot:false, pairA:'_assets/img/labyrinth.jpg', pairAlabel:'DRONE / SITE', pairB:'_assets/img/labyrinth_print.jpg', pairBlabel:'3D PRINT',
+        heroCap:'Open-source SfM + dense reconstruction · cultural-heritage fabrication' }),
+
+      mk({ page:'10', section:'B · Sensing & Heritage', kicker:'Heritage AI · Zenodo datasets',
+        title:'Temple Motif Depth Reconstruction', sub:'Monocular depth of Tamil bas-relief motifs with Depth Anything 3',
+        meta:['2025','Monocular depth','Tamil Nadu'],
+        lead:'Recovering carveable 3D from single photographs of temple bas-relief motifs.',
+        body:'An interactive CLI reconstructs relief geometry from monocular images of Thanjavur, Erode and Namakkal temple motifs using Depth Anything 3. A live preview lets the user tune depth, mask and smoothing, then export watertight STL for study or fabrication.\nThe project ships a 35-panel validated mesh corpus and a motif glossary documenting iconography in Tamil traditions - released openly for conservation and research.',
+        contrib:['Interactive monocular-depth-to-STL reconstruction CLI','35-panel validated mesh corpus (Zenodo / Section 6.6)','Open motif glossary + iconographic documentation'],
+        tags:['Depth Anything 3','Open3D','STL','Heritage'], link:'github.com/libishm1/Depth_Anything_3_Motifs_CLI',
+        hero:'_assets/img/motif_mesh.jpg', thumbs:['_assets/img/motif_panels.jpg','_assets/img/motif_depth.jpg'],
+        heroCap:'Thanjavur bas-relief motif · recovered smooth-depth field' }),
+
+      mk({ page:'11', section:'B · Sensing & Heritage', kicker:'Reconstruction · Open3D',
+        title:'Semi-automatic ICP Registration', sub:'Comparing photogrammetric methods via coarse + fine alignment',
+        meta:['2023','Registration','Open3D'],
+        lead:'A compact tool to register and compare meshes from different photogrammetric methods.',
+        body:'The script benchmarks photogrammetry outputs by aligning them with a two-stage registration: a coarse global alignment followed by fine ICP refinement in Open3D. It gives a repeatable way to quantify how reconstruction methods diverge on the same subject.\nBuilt to support the broader heritage-reconstruction work - keeping scan comparison honest and measurable.',
+        contrib:['Coarse-to-fine ICP registration of photogrammetric meshes','Quantitative comparison across reconstruction methods','Lightweight, reproducible Open3D workflow'],
+        tags:['ICP','Open3D','Point cloud','Registration'], link:'github.com/libishm1/Semi_automatic_ICP_open3D',
+        metrics:[{v:'2-stage',k:'coarse + fine'},{v:'ICP',k:'fine alignment'},{v:'Open3D',k:'engine'},{v:'mesh ↔ PCD',k:'comparison'}],
+        slotSrc:'_assets/img/icp.jpg', slotFit:'cover',
+        specLabel:'Method · registration', specNote:'Python · github.com/libishm1', specFoot:'#B8B2E0',
+        heroCap:'Two-stage registration for photogrammetric method comparison' }),
+
+      mk({ page:'12', section:'B · Sensing & Heritage', kicker:'Studio 2.2 · MRAC',
+        title:'Multispectral Thermal Sensing', sub:'Thermal point-cloud acquisition with mobile robots & drones',
+        meta:['2021','Thermal + depth','ROS'],
+        lead:'Mapping the thermal environment of buildings by fusing thermal, RGB and depth onto point clouds.',
+        body:'A mobile robot carries thermal, RGB and depth cameras, registering thermal imagery into depth frames through a chain of ROS packages and OpenCV. A TurtleBot tunes capture parameters before deployment on autonomous vehicles.\nThe system builds and saves the environment via gmapping for 2D navigation, while reprojecting thermal data into other camera frames to assemble coloured thermal point clouds.',
+        contrib:['Thermal–depth registration and reprojection pipeline','ROS bring-up, gmapping and autonomous 2D navigation','Assembled coloured thermal point clouds of interiors'],
+        tags:['ROS','RealSense','Thermal','gmapping'], link:'github.com/libishm1',
+        hero:P+'page-10-2.jpg', thumbs:[P+'page-10-4.jpg',P+'page-10-3.jpg'],
+        heroCap:'Coloured thermal point cloud · multispectral capture rig' }),
+
+      // -------- SECTION C --------
+      mk({ feature:true, page:'13', section:'C · Computational Tools', kicker:'Flagship · Rhino 8 / Grasshopper plugin',
+        title:'Frahan StonePack', sub:'Stone-fabrication readiness for Rhino 8 / Grasshopper',
+        meta:['2024-26','v0.1.2-alpha','GPL-3.0'],
+        lead:'A production plugin that brings non-standard stone fabrication into the parametric workflow.',
+        body:'Frahan StonePack turns the research on stone packing, scanning and robotic fabrication into a shipped Rhino 8 / Grasshopper toolkit. 275 components in 20 families follow a nine-stage pipeline - from scan and GPR ingest and fracture mapping, through block cutting and 2D nesting, to masonry assembly, reassembly and fabrication export.\nEvery component is source-cited and wired into a live connection graph; assemblies are checked for compression-only stability, and the algorithm core is machine-checked in Lean 4.',
+        contrib:['275 components in 20 families across a nine-stage pipeline','Scan-to-fabricate: ingest, registration, packing, CAM, as-built','Source-cited algorithms + live 151-edge connection graph'],
+        tags:['Rhino 8','Grasshopper','C# / Python','Stone fabrication'], link:'github.com/libishm1/Frahan',
+        metrics:[{v:'275',k:'components'},{v:'9',k:'pipeline stages'},{v:'151',k:'graph edges'},{v:'52',k:'worked examples'}],
+        specLabel:'Plugin · StonePack', specNote:'Rhino 8 · Grasshopper · GPL-3.0', specFoot:'#B8B2E0', capHint:'Drop a Frahan StonePack capture', hasTrio:true, singleSlot:false, trioA:'_assets/img/frahan_pack3d.jpg', trioAlabel:'GUILLOTINE PACKING · GPR FRACTURES', trioB:'_assets/img/frahan_nest2d.jpg', trioBlabel:'2D PACKING', trioC:'_assets/img/frahan_costing.jpg', trioClabel:'BLOCK → SLAB → FACADE · COSTED',
+        heroCap:'275-component stone-fabrication pipeline · live connection graph' }),
+
+      mk({ page:'14', section:'C · Computational Tools', kicker:'Research Prototype · live demo',
+        title:'Topologic Studio', sub:'Browser-native IFC fire-egress simulation',
+        meta:['2025','IFC · graphs','Web app'],
+        lead:'Turning any IFC building into a navigable spatial graph for hazard-aware evacuation.',
+        body:'IFC models are parsed in-browser with web-ifc; floors, stairs and doors become a navigation graph across all levels. A wall-aware Dijkstra computes egress paths, while a temperature-diffusion model streams fire spread over Server-Sent Events and re-routes the path live as the thermal field evolves.\nBuilt on TopologicPy with a React / Three.js front-end and FastAPI back-end; a tabular Q-learning agent learns escape routes under dynamic fire.',
+        contrib:['In-browser IFC → spatial navigation graph','Hazard-weighted dynamic re-routing streamed over SSE','Q-learning egress agent under evolving fire'],
+        tags:['TopologicPy','web-ifc','Three.js','FastAPI'], link:'libishm1.github.io/Topologic_Studio',
+        metrics:[{v:'1,866',k:'graph nodes'},{v:'1,552',k:'edges'},{v:'SSE',k:'live fire stream'},{v:'Q-learning',k:'RL egress'}],
+        slotSrc:'_assets/img/topologic.jpg', slotFit:'cover', capHint:'Drop a Topologic Studio capture',
+        specLabel:'System · IFC egress', specNote:'TopologicPy · React · FastAPI · Render', specFoot:'#B8B2E0',
+        heroCap:'IFC-native graph generation, fire diffusion and adaptive routing' }),
+
+      mk({ page:'15', section:'C · Computational Tools', kicker:'Robotics · ROS 2 Humble',
+        title:'UR10e + RG6 Robotic Stacking', sub:'Pick-and-place stack on ROS 2 + MoveIt 2 (WSL2)',
+        meta:['2025','ROS 2 · MoveIt 2','Pick-place'],
+        lead:'A reproducible UR10e + OnRobot RG6 pick-and-place stack, simulation to real hardware.',
+        body:'An 80-waypoint pick-and-place program runs on ROS 2 Humble and MoveIt 2, in WSL2 on Windows, with visualised box stacking. One-shot launcher scripts manage the full lifecycle - sim, real arm, and an RS-485 Modbus bridge to the RG6 gripper.\nVendor packages are pinned by commit and bootstrapped with vcs import; a self-contained Docker image rebuilds the whole workspace, with a Grasshopper bridge on the Windows side.',
+        contrib:['UR10e + RG6 MoveIt 2 config, SRDF, controllers, launch','RS-485 Modbus gripper bridge + operator scripts','Reproducible Docker workspace + Grasshopper bridge'],
+        tags:['ROS 2','MoveIt 2','UR10e','Docker','WSL2'], link:'github.com/libishm1/UR-10e_RG6_stacking_ROS2_wsl_gh',
+        metrics:[{v:'80',k:'waypoints'},{v:'2',k:'control strategies'},{v:'RS-485',k:'gripper bridge'},{v:'Docker',k:'one-shot stack'}],
+        hasPair:true, singleSlot:false, pairA:'_assets/img/ur_stacking.jpg', pairAlabel:'SIMULATION', pairB:'_assets/img/ur_real.jpg', pairBlabel:'REAL · UR10e',
+        specLabel:'Stack · pick & place', specNote:'ROS 2 Humble · MoveIt 2 · OnRobot RG6', specFoot:'#B8B2E0',
+        heroCap:'Simulated + real UR10e box stacking with the RG6 gripper' }),
+
+      mk({ page:'16', section:'C · Computational Tools', kicker:'Digital Fabrication · PWA',
+        title:'Digital Pointing Machine', sub:'A sculptor’s pointing machine, reimagined for digital stock',
+        meta:['2024','Three.js · BVH','Carving'],
+        lead:'Bridging digital maquettes and physical stone/wood carving with millimetre-accurate point transfer.',
+        body:'A web app reimplements the traditional sculptor’s pointing machine. It wraps a high-resolution scan in a user-defined stock block, then - on any click - shoots a ray to the block surface and returns the exact perpendicular drill depth, rendering start, end and path.\nBuilt with React Three Fiber and three-mesh-bvh for exact raycasting on dense geometry; a clipping plane simulates roughing passes. Ships as an installable, offline PWA.',
+        contrib:['BVH-accelerated exact raycasting for point transfer','Automatic stock-block sizing with margin / kerf','Clipping-plane carving-stage simulation · offline PWA'],
+        tags:['React Three Fiber','three-mesh-bvh','STL · 3DM','PWA'], link:'libishm1.github.io/Digital_pointing_machine',
+        metrics:[{v:'mm',k:'point accuracy'},{v:'BVH',k:'exact raycast'},{v:'STL·OBJ·3DM',k:'inputs'},{v:'PWA',k:'offline install'}],
+        specLabel:'Tool · pointing machine', specNote:'React · Three.js · TypeScript', specFoot:'#B8B2E0', capHint:'Drop a Digital Pointing Machine capture', slotSrc:'_assets/img/pointing.jpg', slotFit:'cover',
+        heroCap:'Digital stock block, drill-depth rays and carving-stage clipping' }),
+
+      // -------- SECTION D --------
+      mk({ feature:true, page:'17', section:'D · Architecture & Studio', kicker:'Computational Design · Godrej Properties',
+        title:'Terrain-Driven Plotted Development', sub:'Road-network generation and cut-and-fill optimisation on sloped terrain',
+        meta:['Professional','Grasshopper','Site / terrain'],
+        lead:'Solving plotted development on a sloped site - generating the road network and optimising plots to balance earthwork.',
+        body:'Surveyor contours are rebuilt into a TIN terrain mesh; a road-construction script lays out the network and grades each segment within walkable limits. A cut-and-fill optimisation then sets plot and road levels to balance earthwork, read against slope and watershed analysis.\nThe plotted generative layout was developed in parallel by senior colleagues; my role covered the terrain meshes, roads, grading and earthwork-balancing scripts. Site data is redacted for privacy.',
+        contrib:['TIN terrain meshes reconstructed from surveyor contours','Road construction with per-segment slope grading (1:11 - 1:66)','Cut-and-fill optimisation balancing earthwork vs. slope & watershed'],
+        tags:['Grasshopper','TIN / mesh','Slope analysis','Watershed','Cut & fill'], link:'Computational Design · Godrej Properties',
+        hasQuad:true, quadHero:'_assets/img/gp_roadslope.jpg', quadHeroLabel:'BUILDABILITY ANALYSIS · ROAD GRADES 1:11 - 1:66',
+        quadRow:[{img:'_assets/img/gp_tin.jpg',label:'TIN TERRAIN · ROADS & PLOTS'},{img:'_assets/img/gp_slope.jpg',label:'BUILDABILITY ON SLOPE'},{img:'_assets/img/gp_cutfill.jpg',label:'BUILDABILITY · BUILT AREA (m²)'}],
+        heroCap:'TIN terrain with road network and plots · buildability, slope and watershed analyses' }),
+
+      mk({ page:'18', section:'D · Architecture & Studio', kicker:'Folds Design Studio · with SRI Design Lab',
+        title:'Metal Cloud', sub:'An auxetic metal pavilion formed as fabric',
+        meta:['2020','Auxetic','Pavilion'],
+        lead:'Achieving a determined form with minimal material by letting sheet metal behave like fabric.',
+        body:'An exploration of architecture from a manufacturing perspective: minimal material, robotic CNC and hands-on fabrication intersecting in a single architectural element. An auxetic pattern lets the metal expand and drape, taking on folded volumes whose rigidity varies with thickness.\nIn-plane expansion of the chosen pattern is estimated through physics simulation; the final pavilion is partly shaped by gravity and artistic hammering.',
+        contrib:['Auxetic-pattern material simulation (in-plane expansion)','Minimal-material form-finding for a draped metal shell','Programmed CNC + hand-finishing fabrication'],
+        tags:['Auxetics','Physics sim','Robotic CNC','Sheet metal'], link:'github.com/libishm1',
+        hero:P+'page-14-2.jpg', thumbs:[P+'page-13-1.jpg',P+'page-14-3.jpg'],
+        heroCap:'Installed auxetic metal canopy · pattern + sample studies' }),
+
+      mk({ page:'19', section:'D · Architecture & Studio', kicker:'FHd Group · computational design',
+        title:'Building for a Billion', sub:'Incremental low-cost housing via multi-objective optimisation',
+        meta:['2018','Optimisation','Housing'],
+        lead:'Redefining low-cost housing through incremental modules and user-defined communes.',
+        body:'User priorities drive a bottom-up design: incremental modules are authored for four household typologies, then aggregated into communes. A multi-objective optimisation maximises the number of modules while minimising incident surface radiation and maximising social space (isovists).\nThe aggregation of modules defines the planning of the entire settlement, generating commune variants tuned to occupancy and climate.',
+        contrib:['Typology-driven incremental housing modules','Multi-objective optimisation (radiation, isovists, count)','Settlement-scale aggregation into communes'],
+        tags:['Multi-objective','Isovists','Radiation','Generative'], link:'github.com/libishm1',
+        hero:P+'page-15-1.jpg', thumbs:[P+'page-15-4.jpg',P+'page-15-2.jpg'],
+        heroCap:'Commune aggregation render · solar-radiation analysis' }),
+    ];
+
+    const plates = [
+      { isCover:true },
+      { isContents:true },
+      { isDivider:true, letter:'A', range:'02 - 07', bg:'#15142C',
+        title:'Robotic Fabrication & Material Computation',
+        blurb:'Building the perception, geometry and motion systems that let machines fabricate with non-standard materials - irregular timber, salvaged stone, sheet metal and clay.',
+        items:['Automated Spolia','CCLT','Log Pavilion','Crease Forming','Lattice Printing','Möbius / IISc'] },
+      ...projects.slice(0,6),
+      { isDivider:true, letter:'B', range:'08 - 12', bg:'#1B2A33',
+        title:'Sensing, Reconstruction & Heritage',
+        blurb:'Ground-penetrating radar, photogrammetry, monocular depth and thermal sensing turned toward stone, quarries and cultural-heritage documentation - much of it open-sourced with datasets.',
+        items:['Kuppam GPR','Drone Photogrammetry','Motif Depth','ICP Registration','Thermal Sensing'] },
+      ...projects.slice(6,12),
+      { isDivider:true, letter:'C', range:'13 - 16', bg:'#262433',
+        title:'Computational Tools & Software',
+        blurb:'Productised research: browser-native BIM analysis, reproducible robot stacks and digital-fabrication tools that put computational design in other people’s hands.',
+        items:['Frahan StonePack','Topologic Studio','UR10e + RG6','Digital Pointing Machine'] },
+      ...projects.slice(12,16),
+      { isDivider:true, letter:'D', range:'17 - 20', bg:'#2A1F1A',
+        title:'Architecture, Site & Studio Work',
+        blurb:'Professional site engineering, pavilions, housing and academic studios where computational methods meet built, terrain and spatial design.',
+        items:['Terrain Plotted Development','Metal Cloud','Building for a Billion','Selected Studio Work'] },
+      ...projects.slice(16,19),
+      { isGrid:true, page:'20', section:'D · Architecture & Studio', kicker:'Selected Studio Work · 2017 - 2020',
+        title:'Selected Studio & Prototyping Work',
+        cards:[
+          { img:P+'page-20-1.jpg', title:'Bamboo Pavilion', sub:'FHD, 2019 · anticlastic shelter, traditional joinery' },
+          { img:P+'page-16-1.jpg', title:'Bhavan - Hotel', sub:'2017 · algorithmic river-view facade optimisation' },
+          { img:P+'page-21-2.jpg', title:'Exploratorium', sub:'2019 · new-media museum, kinetic ceiling' },
+          { img:P+'page-19-1.jpg', title:'Chatras - Landscape', sub:'2018 · deployable origami shading, daylight analysis' },
+          { img:P+'page-23-1.jpg', title:'Sensing the Thermal Env.', sub:'MRAC · schlieren imaging + urban CFD' },
+          { img:P+'page-22-3.jpg', title:'Pandemic Prototyping', sub:'2020 · scissor-joint structures, 3D-printed PPE' },
+          { img:P+'page-12-1.jpg', title:'Plant-D Rover', sub:'MRAC · ROS plant-health detection & mapping' },
+          { img:P+'page-17-1.jpg', title:'Urban Rejuvenation', sub:'2019 · transit-center public intervention' },
+        ] },
+      { isColophon:true, page:'21', repos:[
+        { name:'Frahan', desc:'Stone in computational design - Rhino 8 / Grasshopper stone-fabrication readiness plugin' },
+        { name:'Kuppam_GPR-Fracture_study', desc:'Open GPR fracture model, verification and block yield of a black granite quarry' },
+        { name:'Topologic_Studio', desc:'Browser-native IFC fire-egress simulation (TopologicPy + Three.js + FastAPI)' },
+        { name:'Depth_Anything_3_Motifs_CLI', desc:'Monocular depth reconstruction of Tamil temple bas-relief motifs' },
+        { name:'Colmap_Photogrammetry_Drone_video', desc:'Open-source drone-video → textured mesh heritage pipeline' },
+        { name:'UR-10e_RG6_stacking_ROS2', desc:'UR10e + OnRobot RG6 pick-and-place on ROS 2 + MoveIt 2 (WSL2)' },
+        { name:'Digital_pointing_machine', desc:'Digital sculptor’s pointing machine - React Three Fiber PWA' },
+        { name:'Semi_automatic_ICP_open3D', desc:'Coarse-to-fine ICP comparison of photogrammetric methods' },
+        { name:'ssik · bimascode · ifc-lite', desc:'Analytical IK, BIM-as-code, and a WebGPU IFC viewer' },
+      ] },
+    ];
+
+    return { plates, contents: [
+      { tag:'A', title:'Robotic Fabrication & Material Computation', sub:'Spolia · timber · metal · lattice', pages:'02–07' },
+      { tag:'B', title:'Sensing, Reconstruction & Heritage', sub:'GPR · photogrammetry · depth · thermal', pages:'08–12' },
+      { tag:'C', title:'Computational Tools & Software', sub:'Frahan · IFC · robotics · fabrication', pages:'13–16' },
+      { tag:'D', title:'Architecture, Site & Studio Work', sub:'terrain · pavilions · housing · studios', pages:'17–20' },
+    ] };
+  }
+}
+</script>
+<script>
+addEventListener('load',()=>{(async()=>{
+  for(let i=0;i<120;i++){ if(document.querySelectorAll('.plate').length>=26) break; await new Promise(r=>setTimeout(r,100)); }
+  try{ await document.fonts.ready; }catch(e){}
+  const imgs=Array.from(document.images).filter(i=>!i.complete);
+  await Promise.race([Promise.allSettled(imgs.map(i=>i.decode())),new Promise(r=>setTimeout(r,8000))]);
+  if(location.hash==='#print') setTimeout(()=>window.print(),700);
+})();});
+</script>
+</body>
+</html>

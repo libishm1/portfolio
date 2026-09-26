@@ -1,82 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Libish Murugesan - Architecture & Robotics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Libish Murugesan · Computational Design Portfolio</title>
+<meta name="description" content="Libish Murugesan: computational designer and researcher in robotic fabrication, geometry processing, GPR and heritage reconstruction. Selected works 2015 to 2026.">
+<meta name="theme-color" content="#F6F4EF">
+<meta property="og:title" content="Libish Murugesan · Computational Design Portfolio">
+<meta property="og:description" content="Robotic fabrication · geometry processing · stone · heritage. Selected works 2015 to 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://libishm1.github.io/portfolio/">
+<meta property="og:image" content="https://libishm1.github.io/portfolio/media/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316142E'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='34' fill='%23B8B2E0'%3ELM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./assets/vendor/three/three.module.min.js",
+  "three/addons/": "./assets/vendor/three/addons/"
+} }
+</script>
 </head>
 <body>
-  <div class="page">
-    <header class="hero">
-      <div class="hero__image" id="heroImage"></div>
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <p class="pill">Architecture + Robotics</p>
-        <h1>Libish Murugesan</h1>
-        <p class="lede">
-          Spatial computation, fabrication workflows, and responsive structures. A pared-back deck of selected work.
-        </p>
-        <div class="hero__cta">
-          <button id="openDeck" class="btn primary">Open slides</button>
-        </div>
-      </div>
-    </header>
+<a class="skip" href="#work">Skip to work</a>
+<noscript><div class="noscript">This portfolio uses JavaScript for its galleries and 3D. The <a href="deck/">print version</a> shows the same work as static plates.</div></noscript>
 
-    <main class="content">
-      <section class="section">
-        <div class="section__head">
-          <div>
-            <p class="pill pill--line">Portfolio spreads</p>
-            <h2>Gallery</h2>
-            <p class="muted">Minimal, image-forward layout. Click any plate to view full size.</p>
-          </div>
-        </div>
-        <div id="grid" class="grid"></div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>Architecture & Robotics &mdash; Mumbai</p>
-      <div class="social">
-        <a class="social__link github" href="https://github.com/libishm1" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.334-1.756-1.334-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.044.138 3.003.404 2.292-1.552 3.298-1.23 3.298-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
-        </a>
-        <a class="social__link linkedin" href="https://www.linkedin.com/in/libish-murugesan/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-            <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433c-1.144 0-2.067-.926-2.067-2.066 0-1.142.923-2.066 2.067-2.066 1.141 0 2.066.924 2.066 2.066 0 1.14-.925 2.066-2.066 2.066zM6.814 20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0"/>
-          </svg>
-        </a>
-        <a class="social__link instagram" href="https://www.instagram.com/libish_m/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-            <path fill="currentColor" d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 1.5A4.26 4.26 0 0 0 3.5 7.75v8.5A4.26 4.26 0 0 0 7.75 20.5h8.5A4.26 4.26 0 0 0 20.5 16.25v-8.5A4.26 4.26 0 0 0 16.25 3.5zM12 7.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25zm0 1.5A3.25 3.25 0 1 0 15.25 12 3.25 3.25 0 0 0 12 8.75zM17.9 5.6a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"/>
-          </svg>
-        </a>
-      </div>
-    </footer>
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="#top"><b>Libish Murugesan</b></a>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">Profile</a>
+      <a href="#kuppam">Kuppam GPR</a>
+      <a href="#work">Work</a>
+      <a href="#lab">3D Lab</a>
+      <a href="#stone">Frahan</a>
+      <a href="#publications">Publications</a>
+      <a href="#archive">Archive</a>
+      <a class="btn" href="deck/" target="_blank" rel="noopener">Print portfolio <span class="arr">↗</span></a>
+    </nav>
   </div>
+  <div class="nav__progress" id="navProgress"></div>
+</header>
 
-  <script id="pages-inline" type="application/json">{"title":"presentation","pageCount":23,"pages":[{"index":1,"image":"pages/page-01.jpg","text":""},{"index":2,"image":"pages/page-02.jpg","text":""},{"index":3,"image":"pages/page-03.jpg","text":""},{"index":4,"image":"pages/page-04.jpg","text":""},{"index":5,"image":"pages/page-05.jpg","text":""},{"index":6,"image":"pages/page-06.jpg","text":""},{"index":7,"image":"pages/page-07.jpg","text":""},{"index":8,"image":"pages/page-08.jpg","text":""},{"index":9,"image":"pages/page-09.jpg","text":""},{"index":10,"image":"pages/page-10.jpg","text":""},{"index":11,"image":"pages/page-11.jpg","text":""},{"index":12,"image":"pages/page-12.jpg","text":""},{"index":13,"image":"pages/page-13.jpg","text":""},{"index":14,"image":"pages/page-14.jpg","text":""},{"index":15,"image":"pages/page-15.jpg","text":""},{"index":16,"image":"pages/page-16.jpg","text":""},{"index":17,"image":"pages/page-17.jpg","text":""},{"index":18,"image":"pages/page-18.jpg","text":""},{"index":19,"image":"pages/page-19.jpg","text":""},{"index":20,"image":"pages/page-20.jpg","text":""},{"index":21,"image":"pages/page-21.jpg","text":""},{"index":22,"image":"pages/page-22.jpg","text":""},{"index":23,"image":"pages/page-23.jpg","text":""}]}</script>
+<main id="top">
+<!-- ================= HERO / COVER ================= -->
+<section class="hero" aria-label="Cover">
+  <div class="hero__paper">
+    <div class="hero__top eyebrow"><span>Libish Murugesan</span><span>2015 - 2026</span></div>
+    <div>
+      <div class="kicker hero__kicker">Portfolio · Selected Works</div>
+      <h1 class="display">Computational<br>Design<br><em>Portfolio</em></h1>
+    </div>
+    <div>
+      <div class="hero__rule"></div>
+      <p class="hero__tag">Robotic fabrication · geometry processing · stone · heritage. I build the perception, geometry and motion systems that let machines work with irregular, found and natural materials.</p>
+      <div class="hero__contact">github.com/libishm1<br>Riyadh · Barcelona · Tamil Nadu</div>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#work">Explore the work <span class="arr">↓</span></a>
+        <a class="btn" href="#lab">Turn a rubble vault <span class="arr">↗</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__stage" id="heroStage">
+    <img class="hero__fallback" src="media/d-cover-min-1600.webp" alt="Non-planar printed shell, the cover image of the portfolio" draggable="false">
+    <canvas id="heroCanvas" aria-label="Interactive 3D: stones packed along a Möbius strip. Drag to turn, move the pointer to lift the stones."></canvas>
+    <div class="hero__legend" aria-hidden="true">Stones on a Möbius strip<br><span id="heroCount">1,800</span> fragments · live</div>
+    <div class="hero__hint" aria-hidden="true"><span>Drag to turn</span><span>Hover to lift</span></div>
+  </div>
+</section>
 
-  <div id="overlay" class="overlay hidden">
-    <div class="overlay__inner">
-      <button id="closeOverlay" class="icon-btn" aria-label="Close">&times;</button>
-      <div class="overlay__media">
-        <div class="overlay__badge" id="overlayBadge">Plate 1</div>
-        <img id="overlayImage" alt="Selected plate" draggable="false" />
-        <div class="overlay__nav">
-          <button id="prevBtn" class="icon-btn" aria-label="Previous">&lsaquo;</button>
-          <button id="nextBtn" class="icon-btn" aria-label="Next">&rsaquo;</button>
+<div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
+<!-- ================= PROFILE ================= -->
+<section class="section wrap profile" id="about">
+  <div class="section__bar eyebrow"><span>Profile &amp; Contents</span><span>01</span></div>
+  <div class="profile__grid">
+    <div class="rv">
+      <div class="eyebrow" style="color:var(--indigo);margin-bottom:20px">Profile</div>
+      <h2>Computational designer &amp; researcher in robotic fabrication and geometry.</h2>
+      <p>I build the geometry, perception and motion systems that let machines fabricate with non-standard materials - irregular timber, salvaged stone, sheet metal, clay and concrete. The work spans graduate research, built pavilions, field surveys and an ecosystem of open-source tools for AEC.</p>
+      <p>Trained in architecture (B.Arch) and robotics &amp; advanced construction (MRAC, IAAC Barcelona); currently researching computational architecture and robotics at Alfaisal University, Riyadh.</p>
+      <dl class="facts">
+        <div><dt>Focus</dt><dd>Robotic fabrication · scan-to-fabricate · GPR &amp; stone · geometry &amp; packing · BIM software</dd></div>
+        <div><dt>Stack</dt><dd>Rhino · Grasshopper · ROS 2 · MoveIt 2 · Python · Open3D · Three.js · PyTorch</dd></div>
+        <div><dt>Published</dt><dd id="factPublished">eCAADe 2022 · Caerdroia 54 (2025) · Research Square preprint (2026) · Zenodo &amp; figshare datasets</dd></div>
+        <div><dt>Robots</dt><dd>UR10e · UR5 · KUKA · ABB · TurtleBot · drones</dd></div>
+      </dl>
+    </div>
+    <div class="contents rv">
+      <div class="eyebrow" style="color:var(--indigo);margin-bottom:12px">Contents</div>
+      <div id="contents"></div>
+    </div>
+  </div>
+  <div class="stats rv" id="stats"></div>
+</section>
+
+<!-- ================= FEATURE: KUPPAM ================= -->
+<section class="section wrap feature dark" id="kuppam"></section>
+
+<!-- ================= WORK ================= -->
+<section class="section wrap" id="work">
+  <div class="section__bar eyebrow"><span>Selected Works · A - D</span><span id="workCount"></span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">Index of projects</div>
+      <h2 class="h2">Work, by section</h2>
+    </div>
+    <p class="muted">Every project opens as a case study with its full image set, process sequences and before/after comparisons. Hover a card to flick through its images. Keyboard: arrows move between projects, Esc closes.</p>
+  </div>
+  <div class="filters" id="filters" role="toolbar" aria-label="Filter projects"></div>
+  <div class="work-grid" id="workGrid"></div>
+  <div class="deckcta rv">
+    <div>
+      <div class="eyebrow">Print version</div>
+      <h3>The same portfolio as 26 landscape plates</h3>
+      <p>Designed for print: every plate is live text, sized 1320 × 880, and saves cleanly to PDF from Chrome or Edge.</p>
+    </div>
+    <div class="links">
+      <a class="btn" href="deck/" target="_blank" rel="noopener">View plates <span class="arr">↗</span></a>
+      <a class="btn btn--solid" href="deck/print.html#print" target="_blank" rel="noopener">Print / save PDF <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3D LAB ================= -->
+<section class="section wrap dark" id="lab">
+  <div class="section__bar eyebrow"><span>3D Lab · Frahan StonePack models</span><span>Interactive</span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">Real geometry, in the browser</div>
+      <h2 class="h2">Turn the vault, pull the stones apart</h2>
+    </div>
+    <p class="muted">Models exported straight from the Frahan StonePack examples. Drag to orbit, scroll or pinch to zoom, hover a stone to read it, and use the explode slider to see how each piece sits in the assembly.</p>
+  </div>
+  <div class="lab__grid">
+    <div class="lab__stage" id="labStage">
+      <canvas id="labCanvas" aria-label="Interactive 3D model viewer"></canvas>
+      <div class="lab__loading" id="labLoading"><span id="labLoadingText">Scroll here to load the model</span><div class="lab__bar"><i id="labBar"></i></div></div>
+      <div class="lab__hud"><span id="labHudL"></span><span id="labHudR"></span></div>
+      <div class="lab__tip" id="labTip"></div>
+      <div class="lab__tools">
+        <button type="button" id="labRotate" aria-pressed="true" title="Auto-rotate">Rotate</button>
+        <button type="button" id="labWire" aria-pressed="false" title="Wireframe">Wire</button>
+        <button type="button" id="labReset" title="Reset view">Reset</button>
+        <button type="button" id="labFull" title="Fullscreen">⤢</button>
+      </div>
+    </div>
+    <div class="lab__panel">
+      <div class="lab__tabs" id="labTabs" role="tablist" aria-label="Models"></div>
+      <p class="lab__desc" id="labDesc"></p>
+      <div class="slider">
+        <label for="labExplode"><span>Explode</span><span id="labExplodeVal">0%</span></label>
+        <input type="range" id="labExplode" min="0" max="100" value="0">
+      </div>
+      <div class="slider">
+        <label for="labCut"><span>Section cut</span><span id="labCutVal">off</span></label>
+        <input type="range" id="labCut" min="0" max="100" value="100">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FRAHAN GALLERY ================= -->
+<section class="section wrap" id="stone">
+  <div class="section__bar eyebrow"><span>C · Computational Tools · Frahan</span><span>Gallery</span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">Stone, computed</div>
+      <h2 class="h2">Rubble vaults, voussoirs &amp; fracture-aware blocks</h2>
+    </div>
+    <p class="muted" id="stoneIntro">Frahan StonePack turns the research on stone packing, scanning and robotic fabrication into a Rhino 8 / Grasshopper toolkit. These renders come from its worked examples.</p>
+  </div>
+  <div class="masonry" id="stoneGallery"></div>
+</section>
+
+<!-- ================= STUDIO ================= -->
+<section class="section wrap" id="studio" style="padding-top:0">
+  <div class="section__bar eyebrow"><span>D · Architecture &amp; Studio</span><span>2017 - 2021</span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">Selected studio work</div>
+      <h2 class="h2">Studios, prototypes &amp; pavilions</h2>
+    </div>
+    <p class="muted">Academic studios and hands-on prototypes: bamboo shells, deployable origami shades, transformable scissor structures and pandemic-time fabrication.</p>
+  </div>
+  <div class="studio-grid" id="studioGrid"></div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section class="section wrap" id="publications" style="background:var(--paper-2)">
+  <div class="section__bar eyebrow"><span>Publications, datasets &amp; preprints</span><span id="pubCount"></span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">Open by default</div>
+      <h2 class="h2">Publications</h2>
+    </div>
+    <p class="muted">Papers, preprints and openly licensed datasets, with DOIs. Most of the code and data behind them is public on GitHub, Zenodo and figshare.</p>
+  </div>
+  <div class="pubs" id="pubs"></div>
+  <div class="links" id="profiles" style="margin-top:28px"></div>
+</section>
+
+<!-- ================= ARCHIVE ================= -->
+<section class="section wrap archive" id="archive">
+  <div class="section__bar eyebrow"><span>Archive · Portfolio 2015 - 2022</span><span>23 plates</span></div>
+  <div class="section__head">
+    <div>
+      <div class="kicker" style="margin-bottom:12px">The earlier portfolio, as it was</div>
+      <h2 class="h2">Original plates</h2>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap">
+      <p class="muted" style="max-width:460px">The 23 plates of the previous portfolio, kept in full. Open any plate to read it at full size and zoom into the details.</p>
+      <div class="scrollnav"><button type="button" data-scroll="-1" aria-label="Scroll plates left">‹</button><button type="button" data-scroll="1" aria-label="Scroll plates right">›</button></div>
+    </div>
+  </div>
+  <div class="plates" id="plates"></div>
+</section>
+
+<!-- ================= COLOPHON ================= -->
+<section class="section wrap dark colophon" id="index">
+  <div class="section__bar eyebrow"><span>Index &amp; Colophon</span><span>Repositories</span></div>
+  <div class="colophon__grid">
+    <div>
+      <div class="eyebrow" style="color:var(--lavender);margin-bottom:18px">Repositories</div>
+      <div class="repos" id="repos"></div>
+    </div>
+    <div class="thanks">
+      <div>
+        <h2>Thank you<em>.</em></h2>
+        <p>This portfolio reconstructs a decade of computational design work - from the 2015 to 2022 academic and robotic-fabrication projects to the 2023 to 2026 software, sensing, stone and heritage repositories.</p>
+      </div>
+      <div>
+        <div class="sign">
+          Libish Murugesan<br>
+          <a href="https://github.com/libishm1" target="_blank" rel="noopener">github.com/libishm1</a><br>
+          Computational Architecture &amp; Robotics<br>
+          Riyadh · 2026
+        </div>
+        <div class="social">
+          <a href="https://github.com/libishm1" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.334-1.756-1.334-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.044.138 3.003.404 2.292-1.552 3.298-1.23 3.298-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .32.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          <a href="https://www.linkedin.com/in/libish-murugesan/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433c-1.144 0-2.067-.926-2.067-2.066 0-1.142.923-2.066 2.067-2.066 1.141 0 2.066.924 2.066 2.066 0 1.14-.925 2.066-2.066 2.066zM6.814 20.452H3.861V9h2.953v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0"/></svg></a>
+          <a href="https://www.instagram.com/libish_m/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 1.5A4.26 4.26 0 0 0 3.5 7.75v8.5A4.26 4.26 0 0 0 7.75 20.5h8.5A4.26 4.26 0 0 0 20.5 16.25v-8.5A4.26 4.26 0 0 0 16.25 3.5zM12 7.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25zm0 1.5A3.25 3.25 0 1 0 15.25 12 3.25 3.25 0 0 0 12 8.75zM17.9 5.6a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05z"/></svg></a>
+          <a id="orcidLink" href="#" target="_blank" rel="noopener" aria-label="ORCID" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg></a>
         </div>
       </div>
     </div>
   </div>
+  <div class="foot"><span>© 2026 Libish Murugesan · Images and models are the author's own work unless noted.</span><span><a href="deck/">Print portfolio</a> · <a href="#top">Back to top ↑</a></span></div>
+</section>
+</main>
 
-  <script src="./app.js"></script>
+<!-- ================= OVERLAYS ================= -->
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="caseTitle" hidden></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lb__top"><span id="lbCount"></span><button type="button" class="icon" id="lbClose" aria-label="Close">×</button></div>
+  <div class="lb__stage" id="lbStage">
+    <button type="button" class="icon lb__prev" id="lbPrev" aria-label="Previous">‹</button>
+    <img id="lbImg" alt="" draggable="false">
+    <button type="button" class="icon lb__next" id="lbNext" aria-label="Next">›</button>
+  </div>
+  <div><div class="lb__thumbs" id="lbThumbs"></div><div class="lb__cap" id="lbCap"></div></div>
+</div>
+<div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+
+<script src="assets/js/media.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script type="module" src="assets/js/hero3d.js"></script>
+<script type="module" src="assets/js/lab3d.js"></script>
 </body>
 </html>
