@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Libish Murugesan · Computational Design Portfolio</title>
-<meta name="description" content="Libish Murugesan: computational designer and researcher in robotic fabrication, geometry processing, GPR and heritage reconstruction. Selected works 2015 to 2026.">
+<meta name="description" content="Libish Murugesan: computational designer and researcher in robotic fabrication, geometry processing, GPR and heritage reconstruction. Selected works 2017 to 2026.">
 <meta name="theme-color" content="#F6F4EF">
 <meta property="og:title" content="Libish Murugesan · Computational Design Portfolio">
-<meta property="og:description" content="Robotic fabrication · geometry processing · stone · heritage. Selected works 2015 to 2026.">
+<meta property="og:description" content="Robotic fabrication · geometry processing · stone · heritage. Selected works 2017 to 2026.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://libishm1.github.io/portfolio/">
 <meta property="og:image" content="https://libishm1.github.io/portfolio/media/og-card.jpg">
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/signature.css">
 <script type="importmap">
 { "imports": {
   "three": "./assets/vendor/three/three.module.min.js",
@@ -41,6 +42,7 @@
       <a href="#stone">Frahan</a>
       <a href="#publications">Publications</a>
       <a href="#archive">Archive</a>
+      <a href="#index">Contact</a>
       <a class="btn" href="deck/" target="_blank" rel="noopener">Print portfolio <span class="arr">↗</span></a>
     </nav>
   </div>
@@ -51,18 +53,18 @@
 <!-- ================= HERO / COVER ================= -->
 <section class="hero" aria-label="Cover">
   <div class="hero__paper">
-    <div class="hero__top eyebrow"><span>Libish Murugesan</span><span>2015 - 2026</span></div>
+    <div class="hero__top eyebrow"><span>Libish Murugesan</span><span>2017 - 2026</span></div>
     <div>
       <div class="kicker hero__kicker">Portfolio · Selected Works</div>
-      <h1 class="display">Computational<br>Design<br><em>Portfolio</em></h1>
+      <h1 class="display"><span class="sr-only">Libish Murugesan: </span>Computational<br>Design<br><em>Portfolio</em></h1>
     </div>
     <div>
       <div class="hero__rule"></div>
-      <p class="hero__tag">Robotic fabrication · geometry processing · stone · heritage. I build the perception, geometry and motion systems that let machines work with irregular, found and natural materials.</p>
-      <div class="hero__contact">github.com/libishm1<br>Riyadh · Barcelona · Tamil Nadu</div>
+      <p class="hero__tag">Robotic fabrication · geometry processing · stone · heritage. I build the perception, geometry and motion systems that let machines work with irregular, found and natural material: pine offcuts, scanned logs, stone salvaged from demolition.</p>
+      <div class="hero__contact"><a href="https://github.com/libishm1" target="_blank" rel="noopener">github.com/libishm1</a> · <a href="#index">contact</a><br>Riyadh · Barcelona · Tamil Nadu</div>
       <div class="hero__cta">
-        <a class="btn btn--solid" href="#work">Explore the work <span class="arr">↓</span></a>
-        <a class="btn" href="#lab">Turn a rubble vault <span class="arr">↗</span></a>
+        <a class="btn btn--solid" href="#work">See the work <span class="arr">↓</span></a>
+        <a class="btn" href="#lab">Turn a rubble vault <span class="arr">→</span></a>
       </div>
     </div>
   </div>
@@ -70,7 +72,7 @@
     <img class="hero__fallback" src="media/d-cover-min-1600.webp" alt="Non-planar printed shell, the cover image of the portfolio" draggable="false">
     <canvas id="heroCanvas" aria-label="Interactive 3D: stones packed along a Möbius strip. Drag to turn, move the pointer to lift the stones."></canvas>
     <div class="hero__legend" aria-hidden="true">Stones on a Möbius strip<br><span id="heroCount">1,800</span> fragments · live</div>
-    <div class="hero__hint" aria-hidden="true"><span>Drag to turn</span><span>Hover to lift</span></div>
+    <div class="hero__hint" aria-hidden="true"><span>Drag to turn</span><span id="heroLiftHint">Hover to lift</span></div>
   </div>
 </section>
 
@@ -83,13 +85,13 @@
     <div class="rv">
       <div class="eyebrow" style="color:var(--indigo);margin-bottom:20px">Profile</div>
       <h2>Computational designer &amp; researcher in robotic fabrication and geometry.</h2>
-      <p>I build the geometry, perception and motion systems that let machines fabricate with non-standard materials - irregular timber, salvaged stone, sheet metal, clay and concrete. The work spans graduate research, built pavilions, field surveys and an ecosystem of open-source tools for AEC.</p>
-      <p>Trained in architecture (B.Arch) and robotics &amp; advanced construction (MRAC, IAAC Barcelona); currently researching computational architecture and robotics at Alfaisal University, Riyadh.</p>
+      <p>I build the geometry, perception and motion systems that let machines fabricate with material that does not come in standard sizes: irregular timber, salvaged stone, sheet metal, clay and concrete. The work spans graduate research, built pavilions, field surveys and open-source tools for AEC, from a Grasshopper plugin for stone to a pointing machine for carvers.</p>
+      <p>Trained in architecture (B.Arch, SPA Vijayawada, 2019) and robotics &amp; advanced construction (MRAC, IAAC Barcelona, 2021-23); since 2025 a Research Assistant at Alfaisal University, Riyadh, in digital fabrication and robotic manipulation, also teaching workshops and an elective course.</p>
       <dl class="facts">
         <div><dt>Focus</dt><dd>Robotic fabrication · scan-to-fabricate · GPR &amp; stone · geometry &amp; packing · BIM software</dd></div>
-        <div><dt>Stack</dt><dd>Rhino · Grasshopper · ROS 2 · MoveIt 2 · Python · Open3D · Three.js · PyTorch</dd></div>
+        <div><dt>Stack</dt><dd>Rhino · Grasshopper · C# · Python · ROS 2 · MoveIt 2 · Open3D · OpenCV · Three.js · PyTorch</dd></div>
         <div><dt>Published</dt><dd id="factPublished">eCAADe 2022 · Caerdroia 54 (2025) · Research Square preprint (2026) · Zenodo &amp; figshare datasets</dd></div>
-        <div><dt>Robots</dt><dd>UR10e · UR5 · KUKA · ABB · TurtleBot · drones</dd></div>
+        <div><dt>Robots</dt><dd>UR10e · KUKA · ABB · TurtleBot · drones</dd></div>
       </dl>
     </div>
     <div class="contents rv">
@@ -111,7 +113,7 @@
       <div class="kicker" style="margin-bottom:12px">Index of projects</div>
       <h2 class="h2">Work, by section</h2>
     </div>
-    <p class="muted">Every project opens as a case study with its full image set, process sequences and before/after comparisons. Hover a card to flick through its images. Keyboard: arrows move between projects, Esc closes.</p>
+    <p class="muted">Open a project for its full image set, the process steps and, where there is one, a before-and-after comparison. Hover a card to flick through its images; the arrow keys move between projects and Esc closes.</p>
   </div>
   <div class="filters" id="filters" role="toolbar" aria-label="Filter projects"></div>
   <div class="work-grid" id="workGrid"></div>
@@ -136,7 +138,7 @@
       <div class="kicker" style="margin-bottom:12px">Real geometry, in the browser</div>
       <h2 class="h2">Turn the vault, pull the stones apart</h2>
     </div>
-    <p class="muted">Models exported straight from the Frahan StonePack examples. Drag to orbit, scroll or pinch to zoom, hover a stone to read it, and use the explode slider to see how each piece sits in the assembly.</p>
+    <p class="muted">Models exported from the Frahan StonePack examples (the Güell barrel is split into blocks for viewing). Drag to orbit, scroll or pinch to zoom, hover a stone to read it, and use the explode slider to see how each piece sits in the assembly.</p>
   </div>
   <div class="lab__grid">
     <div class="lab__stage" id="labStage">
@@ -148,11 +150,11 @@
         <button type="button" id="labRotate" aria-pressed="true" title="Auto-rotate">Rotate</button>
         <button type="button" id="labWire" aria-pressed="false" title="Wireframe">Wire</button>
         <button type="button" id="labReset" title="Reset view">Reset</button>
-        <button type="button" id="labFull" title="Fullscreen">⤢</button>
+        <button type="button" id="labFull" title="Fullscreen" aria-label="Fullscreen">⤢</button>
       </div>
     </div>
     <div class="lab__panel">
-      <div class="lab__tabs" id="labTabs" role="tablist" aria-label="Models"></div>
+      <div class="lab__tabs" id="labTabs" role="group" aria-label="Models"></div>
       <p class="lab__desc" id="labDesc"></p>
       <div class="slider">
         <label for="labExplode"><span>Explode</span><span id="labExplodeVal">0%</span></label>
@@ -174,20 +176,20 @@
       <div class="kicker" style="margin-bottom:12px">Stone, computed</div>
       <h2 class="h2">Rubble vaults, voussoirs &amp; fracture-aware blocks</h2>
     </div>
-    <p class="muted" id="stoneIntro">Frahan StonePack turns the research on stone packing, scanning and robotic fabrication into a Rhino 8 / Grasshopper toolkit. These renders come from its worked examples.</p>
+    <p class="muted" id="stoneIntro">Frahan StonePack is an open-source Rhino 8 and Grasshopper plugin that takes stone from the ground to the building. These renders come from its worked examples.</p>
   </div>
   <div class="masonry" id="stoneGallery"></div>
 </section>
 
 <!-- ================= STUDIO ================= -->
 <section class="section wrap" id="studio" style="padding-top:0">
-  <div class="section__bar eyebrow"><span>D · Architecture &amp; Studio</span><span>2017 - 2021</span></div>
+  <div class="section__bar eyebrow"><span>D · Architecture &amp; Studio</span><span>2017 - 2022</span></div>
   <div class="section__head">
     <div>
       <div class="kicker" style="margin-bottom:12px">Selected studio work</div>
       <h2 class="h2">Studios, prototypes &amp; pavilions</h2>
     </div>
-    <p class="muted">Academic studios and hands-on prototypes: bamboo shells, deployable origami shades, transformable scissor structures and pandemic-time fabrication.</p>
+    <p class="muted">Academic studios and hands-on prototypes: a bamboo shelter tied with rope knots, deployable origami shades, a transformable scissor-joint sphere and masks printed during the pandemic.</p>
   </div>
   <div class="studio-grid" id="studioGrid"></div>
 </section>
@@ -197,10 +199,10 @@
   <div class="section__bar eyebrow"><span>Publications, datasets &amp; preprints</span><span id="pubCount"></span></div>
   <div class="section__head">
     <div>
-      <div class="kicker" style="margin-bottom:12px">Open by default</div>
+      <div class="kicker" style="margin-bottom:12px">On the record</div>
       <h2 class="h2">Publications</h2>
     </div>
-    <p class="muted">Papers, preprints and openly licensed datasets, with DOIs. Most of the code and data behind them is public on GitHub, Zenodo and figshare.</p>
+    <p class="muted">Papers, preprints and openly licensed datasets, with DOIs. Most of the code and data behind them is public on GitHub, Zenodo and figshare. Check the numbers, and tell me where they are wrong.</p>
   </div>
   <div class="pubs" id="pubs"></div>
   <div class="links" id="profiles" style="margin-top:28px"></div>
@@ -208,7 +210,7 @@
 
 <!-- ================= ARCHIVE ================= -->
 <section class="section wrap archive" id="archive">
-  <div class="section__bar eyebrow"><span>Archive · Portfolio 2015 - 2022</span><span>23 plates</span></div>
+  <div class="section__bar eyebrow"><span>Archive · Portfolio 2017 - 2024</span><span>23 plates</span></div>
   <div class="section__head">
     <div>
       <div class="kicker" style="margin-bottom:12px">The earlier portfolio, as it was</div>
@@ -233,7 +235,7 @@
     <div class="thanks">
       <div>
         <h2>Thank you<em>.</em></h2>
-        <p>This portfolio reconstructs a decade of computational design work - from the 2015 to 2022 academic and robotic-fabrication projects to the 2023 to 2026 software, sensing, stone and heritage repositories.</p>
+        <p>A decade of work in one place, from the 2017 to 2023 academic and robotic-fabrication projects to the 2023 to 2026 research, software, sensing, stone and heritage work. Thank you to the studio teams, co-authors, crews and colleagues named in these pages. If something here is wrong, tell me.</p>
       </div>
       <div>
         <div class="sign">
@@ -251,7 +253,7 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 Libish Murugesan · Images and models are the author's own work unless noted.</span><span><a href="deck/">Print portfolio</a> · <a href="#top">Back to top ↑</a></span></div>
+  <div class="foot"><span>© 2026 Libish Murugesan · Images and models are my own work unless noted.</span><span><a href="deck/">Print portfolio</a> · <a href="#top">Back to top ↑</a></span></div>
 </section>
 </main>
 
@@ -271,6 +273,7 @@
 <script src="assets/js/media.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/signature.js"></script>
 <script type="module" src="assets/js/hero3d.js"></script>
 <script type="module" src="assets/js/lab3d.js"></script>
 </body>

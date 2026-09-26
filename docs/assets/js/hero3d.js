@@ -212,6 +212,7 @@ function start() {
   }
   loop();
   stage.classList.add('has-3d');
+  if (matchMedia('(hover: none)').matches) { const h = document.getElementById('heroLiftHint'); if (h) h.textContent = 'Tap to lift'; }
 }
 
 function easeOutCubic(x) { return 1 - Math.pow(1 - x, 3); }

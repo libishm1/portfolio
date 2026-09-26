@@ -24,6 +24,9 @@ An interactive portfolio of robotic fabrication, geometry processing, stone and 
 docs/                     the published site (GitHub Pages serves this folder)
   index.html              page structure
   assets/css/site.css     design system (Spectral / Archivo / JetBrains Mono, paper + indigo)
+  assets/css/signature.css + assets/js/signature.js
+                          signature layer: ruler section rules, Frahan stone accents per section,
+                          legend filters, survey-grid letterboxing, drawing title blocks, revision stamp
   assets/js/data.js       ALL content: projects, studio, publications, repos, 3D models
   assets/js/media.js      generated image sizes (scripts/media_manifest.py)
   assets/js/app.js        rendering, filters, case studies, lightbox
@@ -34,7 +37,7 @@ docs/                     the published site (GitHub Pages serves this folder)
   models/                 GLB models for the 3D Lab
   deck/                   print portfolio (see deck/README.md and deck/CLAUDE.md)
 presentation_site/        the previous site, kept as source
-scripts/                  media manifest, pre-deploy check, old PDF extraction
+scripts/                  media manifest, pre-deploy check, print sync, old PDF extraction
 .github/workflows/pages.yml   deploys docs/ to GitHub Pages on every push to main
 ```
 
@@ -43,9 +46,14 @@ scripts/                  media manifest, pre-deploy check, old PDF extraction
 - **Text, images, links:** edit `docs/assets/js/data.js`. Copy rule: no em dashes, use a hyphen or `·`.
 - **New images:** add `docs/media/<slug>-1600.webp` (long edge ≤ 1600) and `<slug>-640.webp`, then run `python scripts/media_manifest.py`. Reference the slug in `data.js`.
 - **LinkedIn post:** set `linkedin.post` (the post URL) and optionally `linkedin.embed` (the iframe `src` from LinkedIn's "Embed this post") in `data.js`.
+- **Print deck:** edit `docs/deck/index.html` only, then run `python scripts/sync_print.py` to regenerate `print.html`.
 - **Check before pushing:** `python scripts/check_site.py` lists any referenced file that is missing. The deploy workflow runs the same check.
 - **Preview locally:** `cd docs && python -m http.server 8000`, then open http://localhost:8000.
 
 ## Deployment
 
 Pushing to `main` runs `.github/workflows/pages.yml`, which checks the files and deploys `docs/` with GitHub Actions (Settings → Pages → Source: GitHub Actions).
+
+## How the current version was reviewed (Sep 2026)
+
+Four independent reviews ran before this release: usability (desktop and 390 px mobile, keyboard, contrast, performance, links), print crops (every frame of the 26-plate deck rendered to PDF), a fact-check of every claim against the CV, the original plates, repositories and project records, and a voice review against Libish's own writing. The signature layer was chosen over the plain layer in two blind A/B judgements (round 1: plain 7.4 vs signature 7.0 as first built; round 2, after trimming: plain 7.0 vs signature 8.5).

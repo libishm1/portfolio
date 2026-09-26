@@ -15,7 +15,7 @@ if (!MODELS.length) {
   document.getElementById('lab').hidden = true;
   document.querySelectorAll('a[href="#lab"]').forEach((a) => { a.hidden = true; });
 } else {
-  tabs.innerHTML = MODELS.map((m, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-id="${esc(m.id)}"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t">${esc(m.title)}</span><span class="s">${esc(m.sub || '')}</span></button>`).join('');
+  tabs.innerHTML = MODELS.map((m, i) => `<button type="button" aria-pressed="${i === 0}" data-id="${esc(m.id)}"><span class="n">${String(i + 1).padStart(2, '0')}</span><span class="t">${esc(m.title)}</span><span class="s">${esc(m.sub || '')}</span></button>`).join('');
   init();
 }
 
@@ -62,6 +62,7 @@ function init() {
     controls.autoRotate = !reduced;
     controls.autoRotateSpeed = 0.7;
     controls.maxPolarAngle = Math.PI * 0.94;
+    controls.enableZoom = false; // wheel scrolls the page until the visitor clicks into the model
     $('labRotate').setAttribute('aria-pressed', controls.autoRotate);
     loader = new GLTFLoader();
     new ResizeObserver(resize).observe(stage);
@@ -96,7 +97,7 @@ function init() {
   function load(id) {
     const m = MODELS.find((x) => x.id === id) || MODELS[0];
     pendingId = m.id;
-    tabs.querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', b.dataset.id === m.id));
+    tabs.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.id === m.id));
     $('labDesc').textContent = m.desc || '';
     if (!ready) return;
     const token = ++loadToken;
@@ -215,8 +216,17 @@ function init() {
     ptrClient = [e.clientX - r.left, e.clientY - r.top];
     ptrDirty = true;
   });
-  canvas.addEventListener('pointerleave', () => { setHover(null); });
-  canvas.addEventListener('pointerdown', () => { if (controls) { controls.autoRotate = false; $('labRotate').setAttribute('aria-pressed', 'false'); } });
+  canvas.addEventListener('pointerleave', () => { setHover(null); if (controls && !coarse) controls.enableZoom = false; });
+  canvas.addEventListener('pointerdown', () => { if (controls) { controls.autoRotate = false; controls.enableZoom = true; $('labRotate').setAttribute('aria-pressed', 'false'); } });
+
+  // touch screens: the canvas rests until tapped, so a vertical swipe still scrolls the page
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  if (coarse) {
+    stage.classList.add('is-idle');
+    stage.insertAdjacentHTML('beforeend', '<button type="button" class="lab__touch" id="labTouch">Tap to explore the model</button><button type="button" class="lab__done" id="labDone" hidden>Done</button>');
+    $('labTouch').addEventListener('click', () => { stage.classList.remove('is-idle'); $('labDone').hidden = false; boot(); if (controls) controls.enableZoom = true; });
+    $('labDone').addEventListener('click', () => { stage.classList.add('is-idle'); $('labDone').hidden = true; setHover(null); });
+  }
   function pick() {
     if (!ptrDirty || !parts.length) return;
     ptrDirty = false;
@@ -249,6 +259,7 @@ function init() {
       camera.position.copy(home.pos); controls.target.copy(home.target); controls.update();
       $('labExplode').value = 0; $('labCut').value = 100; applyExplode(); applyCut();
     });
+    if (!stage.requestFullscreen) $('labFull').hidden = true; // e.g. iPhone Safari has no element fullscreen
     $('labFull').addEventListener('click', () => {
       if (document.fullscreenElement) document.exitFullscreen();
       else if (stage.requestFullscreen) stage.requestFullscreen().catch(() => {});

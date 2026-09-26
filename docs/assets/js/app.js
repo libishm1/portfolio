@@ -38,7 +38,8 @@
   });
 
   // ---------- deter casual saving of images (as on the previous site) ----------
-  const mediaSel = 'img, video, canvas, .tile, .card__media, .plates, .compare, .stepper';
+  // (video is left alone so its native menu - picture-in-picture, speed - still works)
+  const mediaSel = 'img, canvas, .tile, .card__media, .plates, .compare, .stepper';
   document.addEventListener('contextmenu', (e) => { if (e.target.closest && e.target.closest(mediaSel)) e.preventDefault(); });
   document.addEventListener('dragstart', (e) => { if (e.target.closest && e.target.closest(mediaSel)) e.preventDefault(); });
 
@@ -52,22 +53,25 @@
   };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-  $('#navToggle').addEventListener('click', () => {
-    const open = !nav.classList.contains('is-open');
+  const setMenu = (open, focusToggle) => {
     nav.classList.toggle('is-open', open);
     $('#navToggle').setAttribute('aria-expanded', open);
-  });
-  $$('#navLinks a').forEach((a) => a.addEventListener('click', () => { nav.classList.remove('is-open'); $('#navToggle').setAttribute('aria-expanded', 'false'); }));
+    if (!open && focusToggle) $('#navToggle').focus();
+  };
+  $('#navToggle').addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  $$('#navLinks a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('click', (e) => { if (nav.classList.contains('is-open') && !nav.contains(e.target)) setMenu(false); });
   const navMap = new Map($$('#navLinks a[href^="#"]').map((a) => [a.getAttribute('href').slice(1), a]));
+  const navAlias = { studio: 'stone' }; // studio sits under the Frahan gallery in the nav
   const secObs = new IntersectionObserver((ents) => {
     ents.forEach((en) => {
       if (!en.isIntersecting) return;
       navMap.forEach((a) => a.classList.remove('is-active'));
-      const a = navMap.get(en.target.id);
+      const a = navMap.get(navAlias[en.target.id] || en.target.id);
       if (a) a.classList.add('is-active');
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  navMap.forEach((_, id) => { const el = document.getElementById(id); if (el) secObs.observe(el); });
+  new Set([...navMap.keys(), 'studio', 'index']).forEach((id) => { const el = document.getElementById(id); if (el) secObs.observe(el); });
 
   // ---------- ticker ----------
   const tk = (P.ticker || []).map((t) => `<span>${esc(t)}</span>`).join('');
@@ -144,14 +148,18 @@
     $$('#featureStrip .tile').forEach((b) => b.addEventListener('click', () => openLb(toLb(p.gallery, p.title), +b.dataset.i)));
     const lb = $('#liveLoad');
     if (lb) lb.addEventListener('click', () => {
+      // on touch screens an embedded 3D model would swallow page swipes: open it in its own tab instead
+      if (matchMedia('(pointer: coarse)').matches) { window.open(f.iframe, '_blank', 'noopener'); return; }
       $('#live').innerHTML = `<div class="live__bar"><span>Kuppam GPR · live model</span><a href="${esc(f.iframe)}" target="_blank" rel="noopener">Open in new tab ↗</a></div><iframe src="${esc(f.iframe)}" title="Kuppam GPR fracture model" loading="lazy" allow="fullscreen" allowfullscreen style="top:34px;height:calc(100% - 34px)"></iframe>`;
     });
-    // autoplay the (captioned, silent-by-default) film while in view
+    // autoplay the (captioned, silent-by-default) film while in view, unless the visitor paused it
     const vid = $('#filmVideo');
     const conn = navigator.connection || {};
     if (vid && !reduced && !conn.saveData) {
+      let userPaused = false, autoPausing = false;
+      vid.addEventListener('pause', () => { if (!autoPausing) userPaused = true; autoPausing = false; });
       new IntersectionObserver((ents) => ents.forEach((en) => {
-        if (en.isIntersecting) { vid.preload = 'auto'; const pr = vid.play(); if (pr) pr.catch(() => {}); } else if (!vid.paused) vid.pause();
+        if (en.isIntersecting) { if (userPaused) return; vid.preload = 'auto'; const pr = vid.play(); if (pr) pr.catch(() => {}); } else if (!vid.paused) { autoPausing = true; vid.pause(); }
       }), { threshold: .55 }).observe(vid);
     }
     if (hasLi) {
@@ -175,17 +183,21 @@
     html += `<div class="divider" data-sec="${s.id}" style="background:${s.bg}">
       <div class="divider__letter" aria-hidden="true">${s.id}</div>
       <div><div class="eyebrow">Section ${s.id} · ${list.length} projects</div><h3>${esc(s.title)}</h3><p>${esc(s.blurb)}</p></div></div>`;
-    list.forEach((p) => {
-      html += `<button type="button" class="card rv" data-sec="${s.id}" data-slug="${p.slug}" data-no="${esc(p.no)}" aria-label="${esc(p.title)}: open case study">
-        <div class="card__media">${img(p.cover, p.title, 640, 'class="is-on"')}
+    list.forEach((p, i) => {
+      // a lone last card in the 3-column grid becomes a wide card instead of an orphan
+      const wide = list.length % 3 === 1 && i === list.length - 1 ? ' card--wide' : '';
+      html += `<button type="button" class="card rv${wide}" data-sec="${s.id}" data-slug="${p.slug}" data-no="${esc(p.no)}" aria-label="${esc(p.title)}, ${esc(p.year)}: ${esc(p.sub)}. Open case study">
+        <span class="card__media">${img(p.cover, p.title, wide ? 1600 : 640, 'class="is-on"')}
           <span class="card__no">${esc(p.no)}</span>
           <span class="card__badges">${p.isNew ? '<span class="new">New</span>' : ''}${p.model ? '<span>3D</span>' : ''}${p.video ? '<span>Film</span>' : ''}${p.compare ? '<span>Compare</span>' : ''}</span>
-          <span class="card__dots">${p.gallery.slice(0, 5).map((_, i) => `<i class="${i === 0 ? 'is-on' : ''}"></i>`).join('')}</span>
-        </div>
-        <div class="card__meta"><span class="kicker">${esc(p.kicker)}</span><span class="yr">${esc(p.year)}</span></div>
-        <div class="card__title">${esc(p.title)}</div>
-        <div class="card__sub">${esc(p.sub)}</div>
-        <div class="card__tags">${(p.tags || []).slice(0, 4).map((t) => `<span>${esc(t)}</span>`).join('')}</div>
+          <span class="card__dots">${p.gallery.slice(0, 5).map((_, k) => `<i class="${k === 0 ? 'is-on' : ''}"></i>`).join('')}</span>
+        </span>
+        <span class="card__text">
+          <span class="card__meta"><span class="kicker">${esc(p.kicker)}</span><span class="yr">${esc(p.year)}</span></span>
+          <span class="card__title">${esc(p.title)}</span>
+          <span class="card__sub">${esc(p.sub)}</span>
+          <span class="card__tags">${(p.tags || []).slice(0, 4).map((t) => `<span>${esc(t)}</span>`).join('')}</span>
+        </span>
       </button>`;
     });
   });
@@ -267,10 +279,11 @@
     const cmp = p.compare;
     const gal = rest.filter((g) => !stepSlugs.has(g.slug) && !(cmp && (g.slug === cmp.a || g.slug === cmp.b)));
     return `
-      <div class="case__bar"><span>${esc(p.no)} · ${esc(s.title)}</span>
+      <div class="case__bar"><span>${esc(p.no)}<em> · ${esc(s.title)}</em></span>
         <div class="case__nav"><button type="button" data-go="${prev.slug}" aria-label="Previous project">‹</button><button type="button" data-go="${next.slug}" aria-label="Next project">›</button><button type="button" id="caseClose" aria-label="Close case study">×</button></div></div>
       <div class="case__body">
         <div class="case__text">
+          ${p.gallery[0] ? `<button type="button" class="tile case__mhero" data-g="0" aria-label="${esc(p.gallery[0].cap)}">${img(p.gallery[0].slug, p.gallery[0].cap, 1600)}</button>` : ''}
           <div class="kicker">${esc(p.kicker)}</div>
           <h2 id="caseTitle">${esc(p.title)}</h2>
           <p class="sub">${esc(p.sub)}</p>
@@ -293,15 +306,24 @@
           ${p.steps ? `<div class="case__section-label">${esc(p.steps.title)}</div>
             <div class="stepper"><div class="stepper__view">${p.steps.items.map((x, j) => img(x[0], x[1], 1600, `class="${j === 0 ? 'is-on' : ''}"`)).join('')}</div>
             <div class="stepper__steps" role="tablist">${p.steps.items.map((x, j) => `<button type="button" role="tab" aria-selected="${j === 0}" data-step="${j}"><b>${String(j + 1).padStart(2, '0')}</b><span>${esc(x[1])}</span></button>`).join('')}</div></div>` : ''}
-          ${gal.length ? `<div class="case__section-label">Gallery · ${gal.length + 1} images</div>
+          ${gal.length ? `<div class="case__section-label">Gallery · ${p.gallery.length} images in all</div>
             <div class="case__gallery">${gal.map((g) => `<button type="button" class="tile ${g.wide ? 'is-wide' : ''} ${g.contain ? 'tile--contain' : ''}" data-g="${p.gallery.indexOf(g)}" aria-label="${esc(g.cap)}">${img(g.slug, g.cap, g.wide ? 1600 : 640)}<span class="tile__cap">${esc(g.cap)}</span></button>`).join('')}</div>` : ''}
         </div>
-        <div class="case__foot"><button type="button" data-go="${prev.slug}"><small>← Previous</small><span>${esc(prev.title)}</span></button><button type="button" data-go="${next.slug}"><small>Next →</small><span>${esc(next.title)}</span></button></div>
-      </div>`;
+      </div>
+      <div class="case__end"><div class="case__foot"><button type="button" data-go="${prev.slug}"><small>← Previous</small><span>${esc(prev.title)}</span></button><button type="button" data-go="${next.slug}"><small>Next →</small><span>${esc(next.title)}</span></button></div></div>`;
   }
+  // while an overlay is open, the page behind it is inert (no focus or clicks leak out)
+  const setInert = (on) => [$('main'), nav, $('.skip')].forEach((el) => { if (el) el.inert = on; });
+  // a text column taller than the window scrolls until its end shows, then pins
+  const fitCaseText = () => {
+    const txt = $('.case__text', caseEl);
+    if (txt && !caseEl.hidden) txt.style.top = Math.min(90, innerHeight - txt.offsetHeight - 24) + 'px';
+  };
+  addEventListener('resize', fitCaseText);
   function showCase(slug) {
     const p = projects.find((q) => q.slug === slug);
-    if (!p) return hideCase();
+    if (!p) { history.replaceState(null, '', location.pathname + location.search + '#work'); return hideCase(); }
+    setInert(true);
     const wasOpen = !caseEl.hidden;
     if (!wasOpen) lastFocus = document.activeElement;
     current = p;
@@ -331,9 +353,13 @@
       bs.forEach((b) => b.addEventListener('click', () => go(+b.dataset.step)));
       $('.stepper__view', st).addEventListener('click', () => { const j = bs.findIndex((b) => b.getAttribute('aria-selected') === 'true'); go((j + 1) % bs.length); });
     }
+    fitCaseText();
+    requestAnimationFrame(fitCaseText);
+    if (document.fonts) document.fonts.ready.then(fitCaseText);
   }
   function hideCase() {
     if (caseEl.hidden) return;
+    setInert(false);
     caseEl.classList.remove('is-open');
     document.body.classList.remove('is-locked');
     document.title = 'Libish Murugesan · Computational Design Portfolio';
@@ -351,7 +377,7 @@
   }
   function closeCase() {
     if (pushed) { pushed = false; history.back(); }
-    else { history.replaceState(null, '', location.pathname + location.search + '#work'); hideCase(); }
+    else { history.replaceState(null, '', location.pathname + location.search + '#work'); hideCase(); document.getElementById('work').scrollIntoView(); }
   }
   const route = () => {
     const m = location.hash.match(/^#\/work\/([\w-]+)/);
@@ -369,6 +395,8 @@
     $('#lbThumbs').innerHTML = items.length > 1 ? items.map((it, j) => `<button type="button" data-j="${j}" aria-label="Image ${j + 1}"><img src="${it.thumb}" alt="" loading="lazy" draggable="false"></button>`).join('') : '';
     $$('#lbThumbs button').forEach((b) => b.addEventListener('click', () => lbShow(+b.dataset.j)));
     lb.hidden = false;
+    setInert(true);
+    caseEl.inert = true;
     document.body.classList.add('is-locked');
     requestAnimationFrame(() => lb.classList.add('is-open'));
     lbShow(i || 0);
@@ -393,7 +421,8 @@
   function closeLb() {
     lb.classList.remove('is-open');
     setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 300);
-    if (caseEl.hidden) document.body.classList.remove('is-locked');
+    caseEl.inert = false;
+    if (caseEl.hidden) { setInert(false); document.body.classList.remove('is-locked'); }
     if (lbFocus && document.contains(lbFocus)) lbFocus.focus({ preventScroll: true });
   }
   $('#lbClose').addEventListener('click', closeLb);
@@ -409,7 +438,7 @@
       lbImg.style.transform = 'scale(2.4)';
     } else lbImg.style.transform = '';
   });
-  lbStage.addEventListener('mousemove', (e) => {
+  lbStage.addEventListener('pointermove', (e) => { // pointer events: panning a zoomed image also works by touch
     if (!lbStage.classList.contains('is-zoom')) return;
     const r = lbStage.getBoundingClientRect();
     lbImg.style.transformOrigin = `${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`;
@@ -426,6 +455,7 @@
 
   // keyboard
   addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false, true); return; }
     if (!lb.hidden) {
       if (e.key === 'Escape') closeLb();
       else if (e.key === 'ArrowRight') lbShow(lbI + 1);
