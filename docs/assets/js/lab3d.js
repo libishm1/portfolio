@@ -27,6 +27,7 @@ function init() {
   const hiMat = new THREE.MeshStandardMaterial({ color: 0xb8b2e0, emissive: 0x34327a, emissiveIntensity: .35, roughness: .6, side: THREE.DoubleSide, clippingPlanes: [clip] });
   let hovered = null, visible = false, loadToken = 0;
   const cache = new Map();
+  const coarse = matchMedia('(pointer: coarse)').matches; // phones and tablets
 
   const boot = () => {
     if (ready) return;
@@ -63,6 +64,10 @@ function init() {
     controls.autoRotateSpeed = 0.7;
     controls.maxPolarAngle = Math.PI * 0.94;
     controls.enableZoom = false; // wheel scrolls the page until the visitor clicks into the model
+    if (coarse) {
+      controls.enableZoom = true; // pinch zooms on phones
+      canvas.style.touchAction = 'pan-y'; // in the page: a sideways swipe turns the model, a vertical swipe scrolls
+    }
     $('labRotate').setAttribute('aria-pressed', controls.autoRotate);
     loader = new GLTFLoader();
     new ResizeObserver(resize).observe(stage);
@@ -211,22 +216,105 @@ function init() {
   const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
   let ptrDirty = false, ptrClient = [0, 0];
   canvas.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return; // on touch a drag orbits; stones are read by tapping
     const r = canvas.getBoundingClientRect();
     ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     ptrClient = [e.clientX - r.left, e.clientY - r.top];
     ptrDirty = true;
   });
-  canvas.addEventListener('pointerleave', () => { setHover(null); if (controls && !coarse) controls.enableZoom = false; });
+  canvas.addEventListener('pointerleave', (e) => {
+    if (e.pointerType === 'touch') return; // a lifted finger "leaves" too; the tapped stone's label stays up
+    setHover(null);
+    if (controls && !coarse) controls.enableZoom = false;
+  });
   canvas.addEventListener('pointerdown', () => { if (controls) { controls.autoRotate = false; controls.enableZoom = true; $('labRotate').setAttribute('aria-pressed', 'false'); } });
 
-  // touch screens: the canvas rests until tapped, so a vertical swipe still scrolls the page
-  const coarse = matchMedia('(pointer: coarse)').matches;
-  if (coarse) {
-    stage.classList.add('is-idle');
-    stage.insertAdjacentHTML('beforeend', '<button type="button" class="lab__touch" id="labTouch">Tap to explore the model</button><button type="button" class="lab__done" id="labDone" hidden>Done</button>');
-    $('labTouch').addEventListener('click', () => { stage.classList.remove('is-idle'); $('labDone').hidden = false; boot(); if (controls) controls.enableZoom = true; });
-    $('labDone').addEventListener('click', () => { stage.classList.add('is-idle'); $('labDone').hidden = true; setHover(null); });
+  // touch: tap a stone to read its size, double-tap to reset the view
+  let down = null, lastTap = 0, tipTimer = 0;
+  // gestures are timed with each event's own timeStamp (when the finger moved), not when the
+  // handler ran, so a busy main thread on a slow phone does not turn taps into non-taps
+  canvas.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch' && e.isPrimary) down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; });
+  canvas.addEventListener('pointerup', (e) => {
+    if (e.pointerType !== 'touch' || !down || !e.isPrimary) return;
+    const tap = Math.hypot(e.clientX - down.x, e.clientY - down.y) < 10 && e.timeStamp - down.t < 500;
+    down = null;
+    if (!tap) return;
+    if (e.timeStamp - lastTap < 400) { lastTap = 0; resetView(); setHover(null); return; }
+    lastTap = e.timeStamp;
+    const r = canvas.getBoundingClientRect();
+    ptr.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ptrClient = [e.clientX - r.left, e.clientY - r.top];
+    ptrDirty = true;
+    pick();
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(() => setHover(null), 2600);
+  });
+  function resetView() {
+    if (!home) return;
+    controls.enableDamping = false;
+    controls.update(); // flush leftover drag inertia so the view lands exactly home
+    camera.position.copy(home.pos);
+    controls.target.copy(home.target);
+    controls.update();
+    controls.enableDamping = true;
   }
+
+  // explore mode: the viewer fills the screen (native fullscreen where the browser allows it, a fixed
+  // overlay on iPhone). Inside it one finger orbits in every direction, two fingers pinch and pan.
+  const isFull = () => stage.classList.contains('is-full');
+  const sliders = Array.from(document.querySelectorAll('.lab__panel .slider'));
+  const sliderMark = document.createComment('lab sliders');
+  if (sliders[0]) sliders[0].parentNode.insertBefore(sliderMark, sliders[0]);
+  stage.insertAdjacentHTML('beforeend', `<div class="lab__hint" id="labHint" aria-hidden="true"></div>
+    <div class="lab__fullbar" id="labFullbar">
+      <div class="lab__fullnav"><button type="button" data-model-step="-1" aria-label="Previous model">‹</button><span id="labFullTitle"></span><button type="button" data-model-step="1" aria-label="Next model">›</button></div>
+      <button type="button" class="lab__close" id="labClose">Close</button>
+    </div>`);
+  const setHint = () => {
+    $('labHint').textContent = !coarse ? '' : isFull()
+      ? 'Drag to orbit · pinch to zoom · two fingers to pan · double-tap to reset'
+      : 'Swipe sideways to turn · pinch to zoom · ⤢ to explore';
+  };
+  const setFullTitle = () => { const m = MODELS.find((x) => x.id === pendingId); $('labFullTitle').textContent = m ? m.title : ''; };
+  function enterFull() {
+    if (isFull()) return;
+    boot();
+    stage.classList.add('is-full');
+    document.body.classList.add('is-locked');
+    sliders.forEach((el) => $('labFullbar').insertBefore(el, $('labClose')));
+    canvas.style.touchAction = 'none';
+    $('labFull').setAttribute('aria-label', 'Close full screen');
+    if (stage.requestFullscreen && !document.fullscreenElement) stage.requestFullscreen().catch(() => {});
+    setHint();
+    setFullTitle();
+    loop();
+    $('labClose').focus({ preventScroll: true });
+  }
+  function exitFull() {
+    if (!isFull()) return;
+    stage.classList.remove('is-full');
+    if ($('case').hidden && $('lb').hidden) document.body.classList.remove('is-locked');
+    sliders.forEach((el) => sliderMark.parentNode.insertBefore(el, sliderMark));
+    canvas.style.touchAction = coarse ? 'pan-y' : 'none';
+    $('labFull').setAttribute('aria-label', 'Fullscreen');
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    setHint();
+    $('labFull').focus({ preventScroll: true });
+  }
+  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && isFull()) exitFull(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && isFull()) exitFull(); });
+  $('labClose').addEventListener('click', exitFull);
+  $('labFullbar').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-model-step]');
+    if (!b) return;
+    const i = MODELS.findIndex((m) => m.id === pendingId);
+    const next = MODELS[(i + +b.dataset.modelStep + MODELS.length) % MODELS.length];
+    $('labExplode').value = 0; $('labCut').value = 100;
+    load(next.id);
+    setFullTitle();
+  });
+  setHint();
+
   function pick() {
     if (!ptrDirty || !parts.length) return;
     ptrDirty = false;
@@ -255,23 +343,19 @@ function init() {
     $('labWire').addEventListener('click', (e) => { const b = e.currentTarget; b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); applyWire(); });
     $('labRotate').addEventListener('click', (e) => { controls.autoRotate = !controls.autoRotate; e.currentTarget.setAttribute('aria-pressed', controls.autoRotate); });
     $('labReset').addEventListener('click', () => {
-      if (!home) return;
-      camera.position.copy(home.pos); controls.target.copy(home.target); controls.update();
+      resetView();
       $('labExplode').value = 0; $('labCut').value = 100; applyExplode(); applyCut();
     });
-    if (!stage.requestFullscreen) $('labFull').hidden = true; // e.g. iPhone Safari has no element fullscreen
-    $('labFull').addEventListener('click', () => {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else if (stage.requestFullscreen) stage.requestFullscreen().catch(() => {});
-    });
   }
+  // the ⤢ button works before the viewer has booted too
+  $('labFull').addEventListener('click', () => (isFull() ? exitFull() : enterFull()));
 
   let running = false;
   function loop() {
     if (running) return;
     running = true;
     const tick = () => {
-      if (!visible && !document.fullscreenElement) { running = false; return; }
+      if (!visible && !isFull()) { running = false; return; }
       controls.update();
       pick();
       renderer.render(scene, camera);

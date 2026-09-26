@@ -128,17 +128,23 @@ function start() {
     pointer.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     hovering = true;
     if (dragging) {
-      velY += (e.clientX - lastX) * 0.00045;
-      velX += (e.clientY - lastY) * 0.00035;
+      const touch = e.pointerType === 'touch';
+      velY += (e.clientX - lastX) * (touch ? 0.0009 : 0.00045);
+      if (!touch) velX += (e.clientY - lastY) * 0.00035; // on touch, vertical movement belongs to page scroll
       lastX = e.clientX; lastY = e.clientY;
     }
   });
   canvas.addEventListener('pointerleave', () => { hovering = false; pointer.set(9, 9); });
+  // touch: the stage is touch-action pan-y, so a vertical swipe scrolls the page (pointercancel)
+  // and a sideways swipe turns the strip
   canvas.addEventListener('pointerdown', (e) => {
-    if (e.pointerType === 'touch') return; // keep page scroll on touch; tap still lifts
-    dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId);
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    if (e.pointerType !== 'touch') canvas.setPointerCapture(e.pointerId);
   });
-  const endDrag = () => { dragging = false; };
+  const endDrag = (e) => {
+    dragging = false;
+    if (e && e.pointerType === 'touch') setTimeout(() => { hovering = false; pointer.set(9, 9); }, 900);
+  };
   canvas.addEventListener('pointerup', endDrag);
   canvas.addEventListener('pointercancel', endDrag);
 
@@ -212,7 +218,11 @@ function start() {
   }
   loop();
   stage.classList.add('has-3d');
-  if (matchMedia('(hover: none)').matches) { const h = document.getElementById('heroLiftHint'); if (h) h.textContent = 'Tap to lift'; }
+  if (matchMedia('(hover: none)').matches) {
+    const hints = document.querySelectorAll('.hero__hint span');
+    if (hints[0]) hints[0].textContent = 'Swipe to turn';
+    if (hints[1]) hints[1].textContent = 'Touch to lift';
+  }
 }
 
 function easeOutCubic(x) { return 1 - Math.pow(1 - x, 3); }
