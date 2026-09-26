@@ -236,7 +236,7 @@ function init() {
   canvas.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch' && e.isPrimary) down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; });
   canvas.addEventListener('pointerup', (e) => {
     if (e.pointerType !== 'touch' || !down || !e.isPrimary) return;
-    const tap = Math.hypot(e.clientX - down.x, e.clientY - down.y) < 10 && e.timeStamp - down.t < 500;
+    const tap = Math.hypot(e.clientX - down.x, e.clientY - down.y) < 10 && e.timeStamp - down.t < 800; // a held tap (no movement) also reads a stone
     down = null;
     if (!tap) return;
     if (e.timeStamp - lastTap < 400) { lastTap = 0; resetView(); setHover(null); return; }
