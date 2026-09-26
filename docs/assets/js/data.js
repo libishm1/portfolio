@@ -12,7 +12,7 @@ window.PORTFOLIO = {
   ticker: ['Robotic fabrication', 'Scan-to-fabricate', 'Ground-penetrating radar', 'Photogrammetry', 'Stone packing', 'Rubble vaults', 'ROS 2 · MoveIt 2', 'UR10e · KUKA · ABB', 'Rhino 8 · Grasshopper', 'Open3D', 'Heritage reconstruction', 'Non-planar printing', 'Auxetic metal', 'IFC · BIM software'],
 
   stats: [
-    { v: '10', k: 'years of work · 2017 - 2026' },
+    { v: '11', k: 'years of work · 2016 - 2026' },
     { v: '27', k: 'projects and studies on this page' },
     { v: '275', k: 'Frahan StonePack components' },
     { v: '14,315', k: 'GPR picks · Kuppam pilot' },
@@ -32,18 +32,19 @@ window.PORTFOLIO = {
   extraContents: [
     { href: '#lab', tag: '3D', title: '3D Lab', sub: 'rubble vaults and masonry you can turn and take apart', n: 'interactive' },
     { href: '#publications', tag: '§', title: 'Publications', sub: 'papers, preprints and datasets with DOIs', n: '' },
-    { href: '#archive', tag: '↺', title: 'Archive', sub: 'the 2017 - 2024 portfolio, 23 plates', n: '23 plates' },
+    { href: '#archive', tag: '↺', title: 'Archive', sub: 'the 2016 - 2024 portfolio, 23 plates', n: '23 plates' },
   ],
 
   projects: [
     // ================= A · Robotic Fabrication =================
     { slug: 'automated-spolia', section: 'A', year: '2023', feature: true, robot: true,
-      kicker: 'Graduate Thesis · MRAC, IAAC Barcelona', title: 'Automated Spolia', sub: 'Perception-assisted robotic placement of salvaged demolition stone',
+      kicker: 'Individual graduate thesis · MRAC, IAAC Barcelona', title: 'Automated Spolia', sub: 'Perception-assisted robotic placement of salvaged demolition stone',
       meta: ['2023', 'Robotic perception', 'Thesis'],
       lead: 'A robot sees each shard of demolition stone, plans where it fits and places it.',
       body: 'The substrate is irregular and so is every shard. A depth camera scans the surface, and the noisy mesh is cleaned through Taubin smoothing, downsampling and Poisson sampling; a digital twin carries it into the robot cell, where a packing engine picks each shard and turns it to fit by shape, size and surface curvature.\nThe aim is not explicit machine intelligence but a loop people can steer: offline and semi-real-time robotic workflows for digital artists, with visual perception and force-torque feedback settling each stone into place.',
       contrib: ['Scan-to-design database and the design algorithm that packs shards in 2D and 3D by shape, size and curvature', 'Robotic perception: depth-scan mesh processing, digital twin and Open3D shard segmentation', 'Manipulation framework: collision-checked motion planning (Pilz) and servo placement with force-torque feedback'],
       tags: ['Open3D', 'UR10e', 'ROS', 'Grasshopper', 'Packing'], links: [],
+      credits: 'Individual thesis project (MRAC02, IAAC Barcelona), developed with guidance from IAAC faculty.',
       steps: { title: 'Geometry pipeline · scan to packed surface', items: [
         ['old-spolia-substrate', 'Noisy depth scan'], ['old-spolia-mesh-points', 'Taubin + Poisson sampling'], ['old-spolia-mesh-tri', 'Downsampled mesh'], ['old-spolia-mesh-normals', 'Face normals'], ['old-spolia-twin-pack', 'Curvature-aware packing'] ] },
       images: [
@@ -88,7 +89,7 @@ window.PORTFOLIO = {
       body: 'The pavilion is built from irregular wooden logs. Each scan goes into a database that records the log’s end diameters, planes and overall length, and a design-to-fabrication algorithm works out the joinery: how each log is oriented and where its joints are generated.\nThe same scans carry the work from raw log to processing and assembly. Arranging them computationally is what matches the detail at every joint.',
       contrib: ['Coordinated the scan-to-design database of the logs (end diameters, planes, length)', 'Design algorithm matching scanned logs to target curves and resolving joinery', 'Design-to-fabrication automation for the robotic milling'],
       tags: ['3D scanning', 'Point cloud', 'Grasshopper', 'Joinery'], links: [],
-      credits: 'Course team project · MAA02 & MRAC02 22/23 Robotic Fabrication, IAAC · Faculty: Alexandre Dubor, Marielena Papandreou.',
+      credits: 'Group project · MAA02 & MRAC02 22/23 Robotic Fabrication, IAAC · Faculty: Alexandre Dubor, Marielena Papandreou.',
       images: [
         ['old-log-robot', 'KUKA arm processing a scanned log'],
         ['old-log-scan', 'Log scanned on its reference jig'],
@@ -101,9 +102,9 @@ window.PORTFOLIO = {
       meta: ['2022', 'Published · eCAADe', 'Sheet metal'],
       lead: 'A robot feeds aluminium strip under a wheel cutter; the creases fold it into a twist.',
       body: 'The forming borrows from traditional metal-working, and each design is iterated first through origami folding and rapid physics simulation. The small workshop hydraulic press, its wheel cutter and the robot that feeds it make an automated pipeline from design to production.\nA small-payload robot is enough for a wide range of shapes. Spring-back and elastic/plastic deformation are documented as fabrication parameters, not treated as noise.',
-      contrib: ['Studio team work on an origami and physics-simulation forming design space', 'Robot-fed hydraulic-press creasing cell, from design to production', 'Spring-back and plastic deformation documented in the eCAADe 2022 paper (co-author)'],
+      contrib: ['Main ideation behind the creasing method, developed with the four-person studio team', 'Robot-fed hydraulic-press creasing cell, from design to production', 'Spring-back and plastic deformation documented in the eCAADe 2022 paper (co-author)'],
       tags: ['Aluminium', 'Origami', 'Physics sim', 'Robotic forming'], links: [{ label: 'Paper · eCAADe 2022', url: 'https://doi.org/10.52842/conf.ecaade.2022.2.399' }],
-      credits: 'Studio team (MRAC01 Studio I, 2021): Beril Serbes, Robert Michael Blackburn, Libish Murugesan, Arpan Mathe · Faculty: Raimund Krenmueller, Marielena Papandreou, Luciano Carizza · ABB IRB 140 · Paper: Papandreou, Baseta, Mathe, Blackburn, Murugesan · eCAADe 2022, Ghent, Vol. 2, pp. 399-408.',
+      credits: 'Studio team of four (MRAC01 Studio I, 2021): Beril Serbes, Robert Michael Blackburn, Libish Murugesan, Arpan Mathe · Faculty: Raimund Krenmueller, Marielena Papandreou, Luciano Carizza · ABB IRB 140 · Paper: Papandreou, Baseta, Mathe, Blackburn, Murugesan · eCAADe 2022, Ghent, Vol. 2, pp. 399-408.',
       images: [
         ['old-crease-robot-sheet', 'ABB arm feeding aluminium sheet into the forming station'],
         ['old-crease-twists', 'Crease-formed twist demonstrator'],
@@ -114,7 +115,7 @@ window.PORTFOLIO = {
       ] },
 
     { slug: 'lattice-printing', section: 'A', year: '2021', robot: true,
-      kicker: 'Workshop · MRAC', title: 'Non-planar Lattice 3D Printing', sub: 'Space-frame lattices printed on a robotic arm',
+      kicker: 'Workshop 1.2 · MRAC01, first semester', title: 'Non-planar Lattice 3D Printing', sub: 'Space-frame lattices printed on a robotic arm',
       meta: ['2021', 'Non-planar AM', 'Robotic arm'],
       lead: 'In a non-planar lattice, every apex must cool just long enough to hold itself up.',
       body: 'A robotic arm prints non-planar space-frame lattices in PLA. The hardest part is the apex of the pyramidal module, where the extruder has to stop, wait and cool: too long and the plastic sticks to the tip and drags, too short and it is too soft to support itself.\nDeviations across the 0.5 m span showed up when the upper row was printed, and the team worked to correct them; the result is a repeatable lattice module.',
@@ -215,7 +216,7 @@ window.PORTFOLIO = {
           "k": "blocks · 177 m³"
         }
       ],
-      "credits": "Survey, velocity calibration and first interpretation: PARSAN Overseas (Dr Sanjay Rana, Ronak Dahiya) · Re-picking (most surfaces seeded from PARSAN’s picks), model and plan: Libish Murugesan",
+      "credits": "Survey, velocity calibration and first interpretation: PARSAN Overseas (Dr Sanjay Rana, Ronak Dahiya) · Re-picking (most surfaces seeded from PARSAN’s picks), model and plan: Libish Murugesan · With thanks to the crew who painted the grid and walked every line",
       "cover": "kuppam-blocks",
       "steps": {
         "title": "From radar line to cut plan",
@@ -324,12 +325,12 @@ window.PORTFOLIO = {
     },
 
     { slug: 'drone-labyrinths', section: 'B', year: '2025',
-      kicker: 'Independent Research · Caerdroia 54 (2025)', title: 'Drone Photogrammetry of Stone Labyrinths', sub: 'Full-arc drone video to textured mesh - Salem, Tamil Nadu',
+      kicker: 'Independent research · Caerdroia 54 and 55', title: 'Drone Photogrammetry of Stone Labyrinths', sub: 'Full-arc drone video to textured mesh - Salem, Tamil Nadu',
       meta: ['2025', 'Photogrammetry', 'Heritage'],
       lead: 'An open-source pipeline turns one arc of drone video into a textured mesh you can print.',
       body: 'The Ezhu Suthu Kottai, two large stone labyrinths at Vembadithalam near Salem, are said in local accounts to be more than a thousand years old. The workflow is fully open-source and runs end to end in Google Colab: FFmpeg frame extraction, COLMAP structure-from-motion and dense stereo, then Open3D Poisson meshing with nearest-neighbour colour transfer.\nOutputs are vertex-coloured PLY meshes and 3D-printable STL derivatives, cleaned in Rhino 8. Transparency and reproducibility come before speed.',
-      contrib: ['Reproducible Colab pipeline: FFmpeg → COLMAP → Open3D', 'Textured PLY + print-ready STL for heritage documentation', 'Field article on the two labyrinths, Caerdroia 54 (2025)'],
-      tags: ['COLMAP', 'Open3D', 'FFmpeg', 'Rhino 8'], links: [{ label: 'Caerdroia 54 (PDF)', url: 'https://labyrinthos.net/Caerdroia54HR.pdf' }, { label: 'Code', url: 'https://github.com/libishm1/Colmap_Photogrammetry_Drone_video' }],
+      contrib: ['Reproducible Colab pipeline: FFmpeg → COLMAP → Open3D', 'Textured PLY + print-ready STL for heritage documentation', 'Two Caerdroia articles: the labyrinths (54, 2025) and the drone-to-3D-model workflow (55, 2026)'],
+      tags: ['COLMAP', 'Open3D', 'FFmpeg', 'Rhino 8'], links: [{ label: 'Caerdroia 54 (PDF)', url: 'https://labyrinthos.net/Caerdroia54HR.pdf' }, { label: 'Caerdroia 55 (PDF)', url: 'https://labyrinthos.net/Caerdroia55HR.pdf' }, { label: 'Code', url: 'https://github.com/libishm1/Colmap_Photogrammetry_Drone_video' }],
       credits: 'With thanks to Sachin Patil for assistance and Prof. Dr Pandurang for survey guidance (acknowledged in Caerdroia 54).',
       metrics: [{ v: '10.3 · 11.8 m', k: 'labyrinth diameters' }, { v: '2 FPS', k: 'frame extraction' }, { v: 'Poisson', k: 'surface meshing' }, { v: 'PLY · STL', k: 'outputs' }],
       images: [
@@ -350,9 +351,9 @@ window.PORTFOLIO = {
         ['d-motif-depth', 'Photograph and smoothed depth field', { contain: true }],
       ] },
 
-    { slug: 'icp-registration', section: 'B', year: '2023',
+    { slug: 'icp-registration', section: 'B', year: '2023-25',
       kicker: 'Reconstruction · Open3D', title: 'Semi-automatic ICP Registration', sub: 'Comparing photogrammetric methods via coarse + fine alignment',
-      meta: ['2023', 'Registration', 'Open3D'],
+      meta: ['2023-25', 'Registration', 'Open3D'],
       lead: 'A small tool aligns photogrammetry meshes and shows where the methods differ.',
       body: 'The script benchmarks photogrammetry outputs by aligning them with a two-stage registration: a coarse global alignment followed by fine ICP refinement in Open3D. It gives a repeatable way to quantify how reconstruction methods diverge on the same subject.\nBuilt to support the broader heritage-reconstruction work - keeping scan comparison honest and measurable.',
       contrib: ['Coarse-to-fine ICP registration of photogrammetric meshes', 'Quantitative comparison across reconstruction methods', 'Lightweight, reproducible Open3D workflow'],
@@ -388,10 +389,10 @@ window.PORTFOLIO = {
       images: [["frahan-guell-portico-interior", "Inside the Park Güell-inspired portico: irregular rubble stones skin the form-found barrel vault as it sweeps into the leaning colonnade.", {"title": "Güell portico, interior", "wide": true}], ["frahan-guell-rubble-vault", "Close-up of the Güell rubble vault: irregular stones fitted cell by cell over a thrust-following quad remesh of the funicular shell.", {"title": "Güell rubble vault skin"}], ["frahan-pendentive-vault", "A pendentive (sail) vault of 36 voussoirs, each trimmed from a matched rubble boulder · 98.3% of the shell volume recovered from real stone.", {"title": "Pendentive vault from rubble"}], ["frahan-guell-barrel-cra", "The Güell barrel vault as a 452-block, 841-interface rigid-block assembly, certified compression-only stable with zero tension (blue = supports).", {"title": "Güell barrel, certified stable"}], ["frahan-rubble-voussoir-arch", "An 11-voussoir semicircular arch (4.0 m span) where every voussoir is trimmed from a real scanned rubble stone · 94.9% coverage.", {"title": "Rubble voussoir arch"}], ["frahan-voronoi-block-wall", "Fifty polyhedral stones in a 3D Voronoi wall, coloured by the install order recovered from shared-face adjacency (blue set first, red set last).", {"title": "3D Voronoi block wall"}], ["frahan-dry-stone-wall-nbo", "A next-best-object planner builds straight and curved dry-stone walls from scanned stones, choosing the best stone and pose at each step · coloured by course.", {"title": "Next-best-object dry-stone walls"}], ["frahan-stone-wall-robot-frames", "Robot handoff for a dry-stone wall: each placed stone carries a place frame for a UR arm, with a force-seat URScript program generated per stone (simulation only).", {"title": "Stone wall to robot frames"}], ["frahan-castle-portal", "Portal of the castle keep: a 9-voussoir arch fills an opening cut through the generated wall stones, with masonry continuing over the extrados.", {"title": "Castle portal detail"}], ["frahan-trencadis-twist", "A 176-shard trencadís mosaic mapped onto a twisted monument after automatic angle-based surface segmentation.", {"title": "Trencadís on a twisted block"}], ["frahan-statue-to-blocks", "A 3 m sculpture split into 0.5 m blocks: boundary blocks (red) keep the real carved surface, interior blocks (blue) are plain stock.", {"title": "Sculpture to stone blocks"}], ["frahan-dfn-quarry-bench", "A discrete fracture network generated from scanned joint sets and clipped to a quarry bench, the input to block-cut yield optimisation.", {"title": "Fracture network in a quarry bench"}], ["frahan-fracture-block-packing", "Wire-saw block packing in a fractured quarry bench: intact, saw-separable blocks are recovered around the mapped fracture surfaces.", {"title": "Fracture-aware block packing"}], ["frahan-bedding-aligned-blocks", "Wire-saw blocks from the GPR cross-lithology study, rotated in plan to follow the bedding direction (red arrow = dip azimuth) while staying plumb for the saw.", {"title": "Bedding-aligned wire-saw blocks"}], ["frahan-quarry-to-slabs", "Quarry to slab: 60 fracture-free dimension blocks gang-sawn into 888 slabs of 20 mm, a 37.3% end-to-end volume yield.", {"title": "Quarry block to slabs"}], ["frahan-castle-keep", "A small castle keep composed on the Grasshopper canvas: polygonal rubble walls, an arched portal and a pendentive dome, checked stable and exported as one IFC4 model.", {"title": "Castle keep to IFC"}], ["d-frahan-nest2d", "2D packing of irregular slabs", {}], ["d-frahan-costing", "Block → slab → facade, costed", {"wide": true, "contain": true}]] },
 
     { slug: 'topologic-studio', section: 'C', year: '2025-26',
-      kicker: 'Research prototype · extends Wassim Jabi’s Topologic Studio', title: 'Topologic Studio', sub: 'Browser-based IFC fire-egress simulation',
+      kicker: 'Research prototype · original author Wassim Jabi', title: 'Topologic Studio', sub: 'Browser-based IFC fire-egress simulation',
       meta: ['2025-26', 'IFC · graphs', 'Web app'],
       lead: 'Load an IFC model and the escape path redraws itself as the fire spreads.',
-      body: 'IFC models are parsed in-browser with web-ifc; floors, stairs and doors become a navigation graph across all levels. A wall-aware Dijkstra computes egress paths, while a temperature-diffusion model streams fire spread over Server-Sent Events and re-routes the path live as the thermal field evolves.\nIt extends the Topologic Studio web app started by Wassim Jabi, which runs on TopologicPy, a React / Three.js front end and a FastAPI back end. My additions are the IFC egress graph, the fire simulation with live re-routing, and a tabular Q-learning agent that learns escape routes as the fire moves.',
+      body: 'IFC models are parsed in-browser with web-ifc; floors, stairs and doors become a navigation graph across all levels. A wall-aware Dijkstra computes egress paths, while a temperature-diffusion model streams fire spread over Server-Sent Events and re-routes the path live as the thermal field evolves.\nWassim Jabi is the original author of Topologic Studio, which runs on TopologicPy, a React / Three.js front end and a FastAPI back end. I improved it and developed it further: the IFC egress graph, the fire simulation with live re-routing, and a tabular Q-learning agent that learns escape routes as the fire moves.',
       contrib: ['In-browser IFC → spatial navigation graph', 'Hazard-weighted dynamic re-routing streamed over SSE', 'Q-learning egress agent under evolving fire'],
       tags: ['TopologicPy', 'web-ifc', 'Three.js', 'FastAPI'], links: [{ label: 'Live demo', url: 'https://libishm1.github.io/Topologic_Studio/' }, { label: 'Code', url: 'https://github.com/libishm1/Topologic_Studio' }],
       metrics: [{ v: '1,866', k: 'graph nodes' }, { v: '1,552', k: 'edges' }, { v: 'SSE', k: 'live fire stream' }, { v: 'Q-learning', k: 'RL egress' }],
@@ -472,8 +473,8 @@ window.PORTFOLIO = {
     { title: 'Bamboo Pavilion', sub: 'FHD, 2019 · anticlastic shelter tied with rope knots', images: [['old-bamboo-render', 'Pool-deck shelter render'], ['old-bamboo-model-a', 'Anticlastic study model'], ['old-bamboo-model-b', 'Shelter model'], ['old-bamboo-sections', 'Sections: rope-knot joints for a traditional workforce']] },
     { title: 'Pandemic Prototyping', sub: '2020 · scissor-joint structures, 3D-printed masks', images: [['old-proto-hoberman-b', 'Transformable icosidodecahedron, expanded'], ['old-proto-hoberman-a', 'Scissor-joint sphere, collapsed'], ['old-proto-alu-unit', 'Aluminium pavilion unit'], ['old-proto-unfold', 'Faces grouped and unrolled with graph theory'], ['old-proto-mask-cad', 'Mask with a replaceable HEPA filter'], ['old-proto-mask-print', '3D-printed mask']] },
     { title: 'Chatras · Landscape', sub: '2018 · deployable origami shading, daylight analysis', images: [['old-chatras-origami', 'Deployable origami shades with radial actuators'], ['old-chatras-sketch', 'Shade canopy sketch']] },
-    { title: 'Exploratorium', sub: '2019 · B.Arch thesis · new-media museum, kinetic ceiling', images: [['old-explo-projection', 'Experience centre augmented with projection'], ['old-explo-kinetic', 'Kinetic ceiling'], ['old-explo-print', 'Atrium structure study']] },
-    { title: 'Bhavan · Hotel', sub: '2017 · algorithmic river-view facade optimisation', images: [['old-bhavan-facade', 'Optimised river-view facade'], ['old-bhavan-model', 'Hotel massing with the facade screen']] },
+    { title: 'Exploratorium', sub: '2019 · B.Arch thesis · new-media museum, kinetic ceiling', images: [['d-cover-min', '3D-printed shell inspired by Frei Otto, from my B.Arch thesis'], ['old-explo-projection', 'Experience centre augmented with projection'], ['old-explo-kinetic', 'Kinetic ceiling'], ['old-explo-print', 'Atrium structure study']] },
+    { title: 'Bhavan · Hotel', sub: '2016 · algorithmic river-view facade optimisation', images: [['old-bhavan-facade', 'Optimised river-view facade'], ['old-bhavan-model', 'Hotel massing with the facade screen']] },
     { title: 'Sensing the Thermal Env.', sub: 'PANDORA · MRAC team, 2022 · schlieren imaging + urban CFD', images: [['old-thermal-schlieren', 'Schlieren imaging of hot air around an object'], ['old-thermal-hog', 'Flow field from optical flow and HOG'], ['old-thermal-cfd', 'Urban CFD thermal-comfort mapping']] },
     { title: 'Plant-D Rover', sub: 'MRAC team, 2022 · ROS plant-health detection & mapping', images: [['old-plantd-detect', 'Plant status detection on the rover camera feed'], ['old-plantd-rover', 'Mapping run over the plant field']] },
     { title: 'Urban Rejuvenation', sub: '2019 · transit-centre public intervention', images: [['old-urban-concourse', 'Transit concourse']] },
@@ -586,6 +587,17 @@ window.PORTFOLIO = {
       "project": "motif-depth"
     },
     {
+      "year": 2026,
+      "type": "journal",
+      "title": "The Salem Labyrinth: Creating a 3D Model from Drone Footage",
+      "authors": "Libish Murugesan",
+      "venue": "Caerdroia 55 (Labyrinthos), pp. 62-63",
+      "doi": "",
+      "url": "https://labyrinthos.net/Caerdroia55HR.pdf",
+      "note": "How one arc of drone video becomes a 3D model and a print: frame extraction, COLMAP structure-from-motion, Poisson meshing and a 3D print of the Salem labyrinths.",
+      "project": "drone-labyrinths"
+    },
+    {
       "year": 2025,
       "type": "journal",
       "title": "Two Labyrinths Rediscovered in Salem, India",
@@ -617,7 +629,7 @@ window.PORTFOLIO = {
   repos: [
     { name: 'Frahan', desc: 'Stone in computational design - Rhino 8 / Grasshopper stone-fabrication readiness plugin', url: 'https://github.com/libishm1/Frahan' },
     { name: 'Kuppam_granite-deposit_GPR-Fracture_study', desc: 'Open GPR fracture model, verification and block yield of a black granite quarry', url: 'https://github.com/libishm1/Kuppam_granite-deposit_GPR-Fracture_study' },
-    { name: 'Topologic_Studio', desc: 'IFC loading and fire-egress extension of Wassim Jabi’s Topologic Studio (TopologicPy + Three.js + FastAPI)', url: 'https://github.com/libishm1/Topologic_Studio' },
+    { name: 'Topologic_Studio', desc: 'Topologic Studio, original author Wassim Jabi; improved and developed with IFC loading and fire-egress simulation', url: 'https://github.com/libishm1/Topologic_Studio' },
     { name: 'Depth_Anything_3_Motifs_CLI', desc: 'Monocular depth reconstruction of Tamil temple bas-relief motifs', url: 'https://github.com/libishm1/Depth_Anything_3_Motifs_CLI' },
     { name: 'Colmap_Photogrammetry_Drone_video', desc: 'Open-source drone-video → textured mesh heritage pipeline', url: 'https://github.com/libishm1/Colmap_Photogrammetry_Drone_video' },
     { name: 'UR-10e_RG6_stacking_ROS2', desc: 'UR10e + OnRobot RG6 pick-and-place on ROS 2 + MoveIt 2 (WSL2)', url: 'https://github.com/libishm1/UR-10e_RG6_stacking_ROS2_wsl_gh' },
