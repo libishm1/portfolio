@@ -38,6 +38,10 @@ for ref in re.findall(r"(?:src|href)=\"((?:assets|deck)/[^\"#?]+)\"", html):
     if not (DOCS / ref).exists():
         missing.append(ref)
 
+for page in ("rights.html", "tdm-policy.json"):
+    if not (DOCS / page).exists():
+        missing.append(page)
+
 if missing:
     print("Missing files referenced by the site:")
     for m in sorted(set(missing)):

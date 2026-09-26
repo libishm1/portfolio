@@ -36,8 +36,8 @@ docs/                     the published site (GitHub Pages serves this folder)
   media/                  images as <slug>-640.webp and <slug>-1600.webp; archive/ plates; video/
   models/                 GLB models for the 3D Lab
   deck/                   print portfolio (see deck/README.md and deck/CLAUDE.md)
-presentation_site/        the previous site, kept as source
-scripts/                  media manifest, pre-deploy check, print sync, old PDF extraction
+scripts/                  media manifest, pre-deploy check, print sync, rights metadata (embed_rights.py)
+LICENSE.md                all rights reserved, with the MIT / GPL-3.0 exceptions
 .github/workflows/pages.yml   deploys docs/ to GitHub Pages on every push to main
 ```
 
@@ -49,6 +49,13 @@ scripts/                  media manifest, pre-deploy check, print sync, old PDF 
 - **Print deck:** edit `docs/deck/index.html` only, then run `python scripts/sync_print.py` to regenerate `print.html`.
 - **Check before pushing:** `python scripts/check_site.py` lists any referenced file that is missing. The deploy workflow runs the same check.
 - **Preview locally:** `cd docs && python -m http.server 8000`, then open http://localhost:8000.
+
+## Rights and protection
+
+- `docs/rights.html` states what is welcome and what needs permission; the footer links to it.
+- Every page carries the W3C TDMRep reservation (`tdm-reservation`, `tdm-policy.json`), a licence link and a plain notice to automated agents in the page source.
+- `python scripts/embed_rights.py` writes copyright and IPTC "no AI training" metadata into every image and model without changing a pixel (Frahan and Kuppam assets get their GPL-3.0 notice instead). The deploy workflow runs it too, so new images are tagged automatically.
+- The previous site (old presentation PDF and full-size page scans) is no longer in this repository; it is archived offline.
 
 ## Deployment
 

@@ -6,6 +6,7 @@ on:
     paths:
       - "docs/**"
       - "scripts/check_site.py"
+      - "scripts/embed_rights.py"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -29,6 +30,19 @@ jobs:
 
       - name: Check every referenced image, model and video exists
         run: python3 scripts/check_site.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Embed rights metadata in any untagged image or model (lossless, verified)
+        run: |
+          pip install --quiet pillow
+          python scripts/embed_rights.py
+          python scripts/embed_rights.py --check
+
+      - name: Keep editing notes out of the published site
+        run: rm -f docs/deck/CLAUDE.md docs/deck/README.md
 
       - uses: actions/configure-pages@v5
 

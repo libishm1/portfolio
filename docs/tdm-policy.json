@@ -1,0 +1,16 @@
+{
+  "@context": ["http://www.w3.org/ns/odrl.jsonld", "http://www.w3.org/ns/tdmrep.jsonld"],
+  "@type": "Offer",
+  "profile": "http://www.w3.org/ns/tdmrep",
+  "uid": "https://libishm1.github.io/portfolio/tdm-policy.json",
+  "assigner": {
+    "uid": "https://libishm1.github.io/portfolio/",
+    "vcard:fn": "Libish Murugesan",
+    "vcard:url": "https://www.linkedin.com/in/libish-murugesan/"
+  },
+  "permission": [{
+    "target": "https://libishm1.github.io/portfolio/",
+    "action": "tdm:mine",
+    "duty": [{ "action": "obtainConsent" }]
+  }]
+}
