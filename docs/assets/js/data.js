@@ -489,6 +489,17 @@ window.PORTFOLIO = {
   pubs: [
     {
       "year": 2026,
+      "type": "journal",
+      "title": "Towards Climate-Resilient Office Façades: Integrating PCM-Enhanced Glazing with Dynamic External Louvres Under Current and Future Hot–Arid Climates",
+      "authors": "Ammar Alammar, Abdulrahman Ahmed Alymani, Mohammed Alsofiani, Libish Murugesan, Eshrar Latif",
+      "venue": "Sustainability (MDPI) 18(19), 10168",
+      "doi": "10.3390/su181910168",
+      "url": "https://www.mdpi.com/2071-1050/18/19/10168",
+      "note": "Office façades for hot-arid climates, combining PCM-enhanced glazing with dynamic external louvres, tested under current and future climates (open access, CC BY 4.0). My part: software and visualisation, with joint responsibility for methodology, formal analysis, investigation, data curation and the original draft.",
+      "project": ""
+    },
+    {
+      "year": 2026,
       "type": "dataset",
       "title": "Kuppam dolerite benches: ground-penetrating radar fracture model, verification and block yield - pilot dataset",
       "authors": "Libish Murugesan",
